@@ -4,20 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=>, initial-scale=1.0">
+
+    <!-- <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet"> -->
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+
     <title>Home Page</title>
 </head>
 <body>
     <header>
         <!-- The header MUST contain the logo of your Airbnb’s website and could 
         contain the navigation bar and any other content you deem necessary. -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <img src="../images/airbnb_pink_lg.png" style="width: 200px;" class="navbar-brand">
+            </div>
+            <!-- The navigation bar can be within the header or defined as an 
+            entirely new area. It MUST have links that navigate visitors to a sign-up
+            page. Please note, instead of creating a separate page for the sign up page, 
+            you can render it as modal pop-up boxes. Check : https://www.airbnb.ca/ for 
+            example and inspiration. -->
+            
+            <i class="bi bi-globe"></i>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Sing up</a></li>
+                  <li><a class="dropdown-item" href="#">Log in</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+        </nav>
     </header>
-    <navbar>
-        <!-- The navigation bar can be within the header or defined as an 
-        entirely new area. It MUST have links that navigate visitors to a sign-up
-        page. Please note, instead of creating a separate page for the sign up page, 
-        you can render it as modal pop-up boxes. Check : https://www.airbnb.ca/ for 
-        example and inspiration. -->
-    </navbar>
+    
     <main>
         <form>
             <!-- The form can be placed anywhere you deem 
@@ -30,18 +54,107 @@ drop-down list of at least four (4) cities/provinces in Canada
             o Check-out Date
             o No of guestsFigure 1.1
         -->
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">WHERE</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Anywhere">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">CHECK-IN</label>
+            <input type="date" class="form-control" id="exampleFormControlTextarea1"></input>
+            <label for="exampleFormControlTextarea1" class="form-label">CHECKOUT</label>
+            <input type="date" class="form-control" id="exampleFormControlTextarea1"></input>
+          </div>
+          <div class="mb-3">
+          <label for="exampleDataList" class="form-label">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  <option value="1 guest">
+  <option value="2 guest">
+  <option value="3 guest">
+  <option value="4 guest">
+</datalist>
+</div>
+<div class="col-12">
+    <button class="btn btn-danger" type="submit">Search</button>
+  </div>
+
         </form>
         <section id="promo-section">
 <!-- This section should present a banner depicting a 
             promotion for your website. -->
+<div id="explore">
+    <h3>Explore nearby</h3>
+    <div class="">
+        <h4>Huntsville</h4>
+        <span>3.5-hour drive</span>
+    </div>
+    <div class="">
+        <h4>Collingwood</h4>
+    <span>2.5-hour drive</span>
+</div>
+    <div class="">
+        <h4>Lambton Shores</h4>
+        <span>3.5-hour drive</span>
+    </div>
+    <div class="">
+        <h4>Midland</h4>
+        <span>2.5-hour drive</span>
+    </div>
+    <div class="">
+        <h4>Peterborough</h4>
+    <span>2.5-hour drive</span>
+</div>
+    <div class="">
+        <h4>Gravenhurst</h4>
+    <span>3-hour drive</span>
+</div>
+</div>
         </section>
         <section id="info-section">
+            <!-- Informational Section- For this section you must provide content, images and a 
+            video explaining why “Airbnb” is to the visitors/customers. -->
 
         </section>
     </main>
     <footer>
         <!-- This section must include footer menu items, social media links, and any 
 other information you deem necessary -->
+<div id="about">
+    <h4>ABOUT</h4>
+    <a href="#">How Airbnb works</a>
+    <a href="#">Newsroom</a>
+    <a href="#">Investors</a>
+    <a href="#">Airbnb Plus</a>
+    <a href="#">Airbnb Luxe</a>
+    <a href="#">Hotel Toinght</a>
+</div>
+<div id="community">
+    <h4>COMMUNITY</h4>
+    <a href="#">Diversity & Belonging</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Airbnb Associates</a>
+    <a href="#">Frontline Stays</a>
+    <a href="#">Guest Referrals</a>
+    <a href="#">Airbnb.org</a>
+</div>
+<div id="support">
+    <h4>SUPPORT</h4>
+    <a href="#">Help Centre</a>
+    <a href="#">Cancellation options</a>
+    <a href="#">Trust & Safety</a>
+</div>
+<i class="bi bi-globe"></i>
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">$ Currency</a>
+
+<div id="social-media">
+    <i class="bi bi-facebook"></i>
+    <i class="bi bi-twitter"></i>
+    <i class="bi bi-instagram"></i>
+</div>
+<span>&copy;2021 Airbnb, Inc.</span>
+<a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sitemap</a>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

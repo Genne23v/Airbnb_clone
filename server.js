@@ -4,7 +4,17 @@ const express = require('express'),
 
 
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.send('Welcome to my home!');
 });
 
-app.listen(HTTP_PORT);
+app.get('/myimage', (req, res) => {
+    res.send('This is my image page');
+});
+
+app.get('/info', (req, res) => {
+    res.send('This is my info page');
+})
+
+app.listen(HTTP_PORT, () => {
+    console.log(`The server is running... to port ${HTTP_PORT}`);
+});

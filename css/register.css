@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400&display=swap');
+
+body {
+    font-family: 'Roboto', Helvetica; 
+    margin:0;
+}
+
+.registration-form {
+    width: 650px;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    padding: 30px 20px;
+    
+}
+
+.social-media-login {
+    text-align: center;
+}
+
+.registration-form a:link {
+text-decoration: none;
+color: rgb(37, 95, 170);
+font-weight: 600;
+}
+
+.form-divider p {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    line-height: .1em;
+    margin: 20px 0 10px;
+}
+.form-divider p span {
+    display: inline-block;
+    background: #fff;
+    padding: 0 8px;
+}
+.form-group {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin: 25px 0;
+    padding: 5px;
+    align-items: center;
+}
+
+.form-control{
+    border: 0px !important;
+    background-color: none !important;
+}
+
+.sign-up {
+border: 0;
+background-color: #ff385c;
+color:white;
+width: 100%;
+padding: 5px;
+}
+.form-group.submit {
+    background-color: #ff385c;
+}
+
+.form-row  {
+    width: 600px;
+    display: flex;
+justify-content: space-between;
+}
+/* .form-divider p span::before{
+    content: "" !important;
+    border-bottom: 1px solid black !;
+    width: 500px !important;
+    position: absolute !important;
+    top: 50%;
+    right:100%;
+}
+
+.form-divider p span::after{
+    content: "" !important;
+    border-bottom: 1px solid black !;
+    width: 500px !important;
+    position: absolute !important;
+    top: 50%;
+    left:100%;
+} */
+
+
+
+

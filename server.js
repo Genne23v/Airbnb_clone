@@ -1,11 +1,16 @@
 const HTTP_PORT = process.env.PORT || 8080;
 const express = require('express'),
-    app = express();
+    app = express(),
+    exphbs = require('express-handlebars');
 
-app.use(express.static('static'));
+
+app.use(express.static('public'));
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');    
 
 app.get('/', (req, res) => {
-    res.send('Welcome to my home!');
+    res.render('home');
+    res.send('Welcome to Airbnb home!');
 });
 
 app.get('/registration', (req, res) => {

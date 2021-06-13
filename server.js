@@ -1,16 +1,17 @@
 const HTTP_PORT = process.env.PORT || 8080;
 const express = require('express'),
-    app = express(),
-    exphbs = require('express-handlebars');
-
+    handlebars = require('express-handlebars'),
+    path = require('path'),
+    app = express();
 
 app.use(express.static('public'));
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');    
+app.set('view engine', 'hbs');    
+app.engine('hbs', handlebars( { extname: 'hbs', defaultLayout: 'home', layoutDir: __dirname + '/views/layouts'}));
 
 app.get('/', (req, res) => {
-    res.render('home');
-    res.send('Welcome to Airbnb home!');
+    res.render('home', {
+        layout: 'index'
+    });
 });
 
 app.get('/registration', (req, res) => {
@@ -18,7 +19,9 @@ app.get('/registration', (req, res) => {
 });
 
 app.get('/room_listing', (req, res) => {
-    res.send('This is the result of your search');
+    res.render('room_listing', {
+        layout: 'index'
+    });;
 });
 
 app.use((req, res) => {

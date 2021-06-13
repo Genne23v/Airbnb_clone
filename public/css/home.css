@@ -75,7 +75,7 @@ header {
   color: white;
 }
 .intro h4 {
-  font-size: 3em;
+  font-size: 40px;
 }
 .intro h5 > span {
   display: inline-block;
@@ -86,7 +86,7 @@ header {
   font-weight: 600;
 }
 .intro h5 {
-  font-size: 2em;
+  font-size: 28px;
 }
 .intro button {
   background-color: #d3691b;

@@ -8,8 +8,8 @@ body {
 /* NAV */
 header {
   padding: 0 50px;
-  /* border-bottom: 1px solid lightgray; */
   height: 100px;
+  background-color: white;
   box-shadow: rgb(0, 0, 0, 0.1) 0px 1px 12px;
 }
 .nav-item {
@@ -71,4 +71,11 @@ header {
   color: dimgray;
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+.room-rate .rate {
+  font-weight: 600;
+}
+.room-rate .review {
+  color: dimgray;
 }

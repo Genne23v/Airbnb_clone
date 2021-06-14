@@ -15,11 +15,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/registration', (req, res) => {
-    res.send('This is my registration page');
+    res.render('registration', {
+        layout: false
+    });
 });
 
-app.get('/room_listing', (req, res) => {
-    res.render('room_listing', {
+app.get('/room-listing', (req, res) => {
+    res.render('room-listing', {
         layout: 'index'
     });;
 });

@@ -94,6 +94,7 @@ header {
   font-weight: 400;
   padding: 6px 18px 4px;
   border-radius: 8px;
+  border: 0px;
 }
 
 /* FORM */
@@ -106,23 +107,23 @@ form {
   background-color: rgba(106, 74, 50, 0.8);
   /* #414141 */
   width: 60vw;
-  height: 90px;
+  height: 75px;
   top: 82%;
   right: 2em;
   border-radius: 15px;
   padding: 10px 0px 8px 20px;
   color: white;
   font-weight: 600;
-  /* object-fit: contain; */
 }
 .form-control {
   border: 0px;
-  font-size: 1.2em;
+  font-size: 17px;
   color: white;
   font-weight: 200;
   padding: 0;
   background-color: rgba(106, 74, 50, 0);
   text-align: start;
+  line-height: 1;
 }
 .input-daterange input {
   text-align: start;
@@ -132,7 +133,7 @@ form {
   font-weight: 200;
 }
 .form-label {
-  margin: 0 0 5px;
+  margin: 0;
 }
 .mb-3,
 .mb-2 {
@@ -149,7 +150,7 @@ form input {
 .submit-btn {
   background-color: #d3691b;
   color: white;
-  height: 90px;
+  height: 75px;
   width: 100px;
   border-radius: 0 15px 15px 0;
 }
@@ -171,6 +172,26 @@ form input {
   font-size: 16px !important;
   width: 60px;
   height: 40px;
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #d3691b;
+  border-color: transparent;
+  color: #fff;
+}
+.daterangepicker td.in-range {
+  background-color: #e9dbd3;
+  color: #000;
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.daterangepicker td.end-date {
+  border-radius: 0 4px 4px 0;
+  background-color: #d3691b;
+  border-color: transparent;
+  color: #fff;
 }
 
 /* EXPLORE */
@@ -325,7 +346,7 @@ form input {
 #luxe-intro {
   border-radius: 0 0 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 12px;
-  padding: 10px 25px;
+  padding: 25px 25px;
 }
 #luxe-intro > * {
   margin: 0;

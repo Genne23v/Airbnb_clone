@@ -7,11 +7,15 @@ body {
 }
 
 .modal-content {
-  border-radius: 25px;
+  border-radius: 20px;
+  margin-right: 0;
 }
-.registration-form {
-  width: 600px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+#login-modal {
+  top: 65px;
+  left: 500px;
+}
+.login-form {
+  width: 400px;
   margin: 0 auto;
   padding: 30px 20px;
 }
@@ -20,9 +24,9 @@ body {
   text-align: center;
 }
 
-.registration-form a:link {
+.login-form a:link {
   text-decoration: none;
-  color: #7dbfe7;
+  color: #24a0ed;
   font-weight: 600;
 }
 
@@ -57,7 +61,7 @@ body {
   font-size: 16px;
   padding: 0;
 }
-.sign-up {
+.log-in {
   border: 0;
   font-size: 16px;
   font-weight: 500;
@@ -70,7 +74,7 @@ body {
 }
 
 .form-row {
-  width: 650px;
+  width: 400px;
   display: flex;
   justify-content: space-between;
 }
@@ -78,3 +82,20 @@ body {
 .form-select {
   color: dimgray;
 }
+/* .form-divider p span::before{
+    content: "" !important;
+    border-bottom: 1px solid black !;
+    width: 500px !important;
+    position: absolute !important;
+    top: 50%;
+    right:100%;
+}
+
+.form-divider p span::after{
+    content: "" !important;
+    border-bottom: 1px solid black !;
+    width: 500px !important;
+    position: absolute !important;
+    top: 50%;
+    left:100%;
+} */

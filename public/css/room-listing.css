@@ -7,29 +7,61 @@ body {
 
 /* NAV */
 header {
+  position: sticky;
+  top: 0;
   padding: 0 50px;
   height: 100px;
   background-color: white;
+  color: dimgray;
   box-shadow: rgb(0, 0, 0, 0.1) 0px 1px 12px;
 }
 .nav-item {
   font-weight: 600;
   border: 1px solid lightgray;
   border-radius: 10px;
+  color: dimgray;
 }
 
-.form-divider {
+.search-form-divider {
   align-items: center;
-  height: 26px;
+  height: 32px;
   width: 2px;
   border-left: 1px solid lightgray;
 }
 
 .nav-item .mb-3 {
-  padding: 15px 25px;
+  padding: 15px 40px;
   margin-bottom: 0px !important;
 }
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.nav-right > * {
+  margin: 14px;
+}
+.nav-item svg:first-of-type {
+  margin-right: 13px;
+}
+.navbar a {
+  text-decoration: none;
+  color: dimgray;
+}
+.bi-globe {
+  width: 20px;
+  height: 20px;
+  color: dimgray;
+}
+.bi-person-circle,
+.bi-list {
+  color: dimgray;
+}
 
+.dropdown::marker {
+  content: none;
+}
 /* SEARCH RESULT */
 #search-result {
   padding: 50px;

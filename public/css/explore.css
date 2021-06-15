@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400&display=swap");
+
+body {
+  font-family: "Roboto", Helvetica;
+  margin: 0;
+}
+/* EXPLORE */
+#promo-section {
+  padding: 50px;
+}
+#explore-section {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+}
+.suggestion-thumbnail {
+  border-radius: 20px;
+}
+.explore-each {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 400px;
+  margin: 10px 20px 10px 0;
+  padding: 0;
+}
+.explore-suggestion {
+  padding-left: 20px;
+  width: 200px;
+}

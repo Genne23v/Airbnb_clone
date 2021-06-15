@@ -1,178 +1,8 @@
-    <!-- <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet"> -->
-<!-- BOOTSTRAP CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
 
-<link href="../css/home.css" rel="stylesheet">
+{{!-- INFO SECTION CSS --}}
+<link href="../css/info.css" rel="stylesheet" />
 
-    <title>Airbnb: Vacation Rentals, Cabins, Beach Houses, Unique Homes</title>
-</head>
-<body>
-
-    <div class="bg-img">
-    <header>
-        <!-- The header MUST contain the logo of your Airbnb’s website and could 
-        contain the navigation bar and any other content you deem necessary. -->
-        <div class="container-fluid">
-        <div class="navbar navbar-expand-lg navbar-light bg-transparent">
-                <a class="navbar-brand" href="#"><img src="./images/logo@2x.png" style="width: 150px;" ></a>
-            <!-- The navigation bar can be within the header or defined as an 
-            entirely new area. It MUST have links that navigate visitors to a sign-up
-            page. Please note, instead of creating a separate page for the sign up page, 
-            you can render it as modal pop-up boxes. Check : https://www.airbnb.ca/ for 
-            example and inspiration. -->
-            <div class="nav-right">
-            <a href="#" style="color: white; display: block">Become a Host</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
-                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
-              </svg>
-            <!-- <i class="bi bi-globe"></i> -->
-            <li class="nav-item dropdown">
-                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="d-flex flex-row justify-content-between align-items-center" id="menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                      </svg>    
-                    </div>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                      <a class="dropdown-item sign-up" data-toggle="modal" data-target="#registration-modal" href="/registration">Sign up</a>
-                      </li>
-                  <li><a class="dropdown-item" href="#">Log in</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Host your home</a></li>
-                  <li><a class="dropdown-item" href="#">Host an experience</a></li>
-                  <li><a class="dropdown-item" href="#">Help</a></li>
-                </ul>
-              </li>
-            </div>
-        </div>
-    </div>
-    </header>
-    <div class="intro">
-        <h5>Airbnb <span>2021</span></h5>
-        <h4>Instroducing 100+ upgrades across our entire service</h4>
-        <button>Learn what's new</button>
-    </div>
-    <form>
-        <!-- The form can be placed anywhere you deem 
-        aesthetically pleasing, the top area of the web page may be the most favorable. 
-        The form should be designed similarly to the Figure 1.1 and should capture the 
-        following data from the user : 
-        o City in Canada where the user wants to book a room. This should be a 
-drop-down list of at least four (4) cities/provinces in Canada
-        o Check-in Date
-        o Check-out Date
-        o No of guestsFigure 1.1
-    -->
-    <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input type="text" class="form-control" id="location" placeholder="Where are you going?" >
-      </div>
-      <div class="form-divider"></div>
-      <div class="mb-2 input-daterange">
-        <label for="check-in" class="form-label">Check in</label>
-        <input type="text" class="form-control" id="picker" date-provide="datepicker" placeholder="Add dates"></input>
-    </div>
-    <div class="form-divider"></div>
-    <div class="mb-2 input-daterange">
-        <label for="check-out" class="form-label">Check out</label>
-        <input type="text" class="form-control" id="end-date" date-provide="datepicker" placeholder="Add dates"></input>
-      </div>
-      <div class="form-divider"></div>
-      <div class="mb-2">
-      <label for="guests" class="form-label">Guests</label>
-<input class="form-control" list="datalistOptions" id="guests" placeholder="Add guests" style="color: white;">
-<datalist id="datalistOptions">
-<option value="1 guest">
-<option value="2 guests">
-<option value="3 guests">
-<option value="4 guests">
-</datalist>
-</div>
-<div class="mb-2">
-    <button class="btn submit-btn" type="submit">
-        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>
-    </button>
-</div>
-    </form>
-    </div>
-    
-    <main>
-        <section id="promo-section">
-<!-- This section should present a banner depicting a 
-            promotion for your website. -->
-
-    <h2 style="font-weight: 600;">Explore nearby</h2>
-    <div id="explore-section" class="container-fluid">
-        <div class="row row-cols-3 row-cols-lg-4 d-flex">
-            <div class="col explore-each">
-                <img src="../images/explore/algonquin_park.jfif" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-                <div class="explore-suggestion">
-                    <h5>Algonquin Park</h5>
-                    <span>5.5-hour drive</span>
-                </div>
-            </div>
-            <div class="col explore-each">
-                <img src="../images/explore/toronto.jpg" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-                <div class="explore-suggestion">
-                    <h5>Downtown Toronto</h5>
-                    <span>1-hour drive</span>
-                </div>
-            </div>
-            <div class="col explore-each">
-                <img src="../images/explore/niagara_falls.jfif" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-                <div class="explore-suggestion">
-                    <h5>Niagara Falls</h5>
-                    <span>2-hour drive</span>
-                </div>
-            </div>
-        <div class="col explore-each">
-            <img src="../images/explore/niagara_on_the_lake.jfif" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-            <div class="explore-suggestion">
-                <h5>Niagara on the Lake</h5>
-                <span>2-hour drive</span>
-            </div>
-        </div>
-        <div class="col explore-each">
-            <img src="../images/explore/thousand-islands-national-park.jpg" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-            <div class="explore-suggestion">
-                <h5>Thousand Islands</h5>
-                <span>4.5-hour drive</span>
-            </div>
-        </div>
-        <div class="col explore-each">
-            <img src="../images/explore/prince_edward.jfif" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-            <div class="explore-suggestion">
-                <h5>Prince Edward County</h5>
-                <span>2.5-hour drive</span>
-            </div>
-    </div>
-    <div class="col explore-each">
-        <img src="../images/explore/sandbanks.jpg" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-        <div class="explore-suggestion">
-            <h5>Sandbanks</h5>
-            <span>3.5-hour drive</span>
-        </div>
-</div>
-<div class="col explore-each">
-    <img src="../images/explore/vaughan.jpg" style="width: 150px; height: 100px;" class="suggestion-thumbnail">
-    <div class="explore-suggestion">
-        <h5>Vaughan</h5>
-        <span>1-hour drive</span>
-    </div>
-</div>
-</div>
-        </section>
-        <section id="info-section">
+<section id="info-section">
             <!-- Informational Section- For this section you must provide content, images and a 
             video explaining why “Airbnb” is to the visitors/customers. -->
 <div id="how-it-works">
@@ -183,7 +13,7 @@ drop-down list of at least four (4) cities/provinces in Canada
         <p>Start by exploring Stays or Experiences. Apply filters like entire homes, self check-in, or pets allowed to narrow your options. You can also save favourites to a wishlist.</p>
     </div>
 <div class="demo-video">
-    <video autoplay="" loop="" muted="" playsinline="" height="100%" width="100%"><source src="https://a0.muscache.com/v/fd/75/fd7562b2-8529-5b6d-b4f3-fabf2ba7e811/fd7562b285295b6db4f3fabf2ba7e811_400k_1.mp4" type="video/mp4"></video>
+    <video autoplay="" loop="" muted="" playsinline="" height="auto" width="100%"><source src="https://a0.muscache.com/v/fd/75/fd7562b2-8529-5b6d-b4f3-fabf2ba7e811/fd7562b285295b6db4f3fabf2ba7e811_400k_1.mp4" type="video/mp4"></video>
 </div>
 </div>
 <div class="demo-reverse">
@@ -192,7 +22,7 @@ drop-down list of at least four (4) cities/provinces in Canada
     <p>Once you’ve found what you’re looking for, learn about your host, read past guest reviews, and get the details on cancellation options—then book in just a few clicks.</p>
     </div>
 <div class="demo-video">
-    <video autoplay="" loop="" muted="" playsinline="" height="100%" width="100%"><source src="https://a0.muscache.com/v/36/3d/363dc909-90aa-529c-962b-80447e25b1b7/363dc90990aa529c962b80447e25b1b7_400k_1.mp4" type="video/mp4"></video>
+    <video autoplay="" loop="" muted="" playsinline="" height="auto" width="100%"><source src="https://a0.muscache.com/v/36/3d/363dc909-90aa-529c-962b-80447e25b1b7/363dc90990aa529c962b80447e25b1b7_400k_1.mp4" type="video/mp4"></video>
 </div>
 </div>
 <div class="demo">
@@ -201,14 +31,14 @@ drop-down list of at least four (4) cities/provinces in Canada
     <p>You’re all set! Connect with your host through the app for local tips, questions or advice. You can also contact Airbnb anytime for additional support.</p>
     </div>
     <div class="demo-video">
-        <video autoplay="" loop="" muted="" playsinline="" height="100%" width="100%"><source src="https://a0.muscache.com/v/c8/43/c84393ce-f53e-5ff9-9dca-7724529fe4c3/c84393cef53e5ff99dca7724529fe4c3_400k_1.mp4" type="video/mp4"></video>
+        <video autoplay="" loop="" muted="" playsinline="" height="auto" width="100%"><source src="https://a0.muscache.com/v/c8/43/c84393ce-f53e-5ff9-9dca-7724529fe4c3/c84393cef53e5ff99dca7724529fe4c3_400k_1.mp4" type="video/mp4"></video>
     </div>
     </div>
 </div>
 
     <div id="airbnb-plus">
 <div id="plus-video" >
-    <video controlslist="nodownload" poster="https://a0.muscache.com/4ea/air/v2/pictures/SelectGuestLandingPage/hero_poster/original/59a8a097-dab1-4de8-b6d1-262fde18cfd7.jpg" style="object-fit: cover; width: 100%; height: 100%;"><source type="video/mp4" src="https://a0.muscache.com/v/7a/dc/7adc575c-6b16-484c-ac3b-73a3e20d5e9b/0e6b0dd2086a5ea8ae03eb8c01b9181a_4000k_2.mp4"></video>
+    <video autoplay muted controlslist="nodownload" poster="https://a0.muscache.com/4ea/air/v2/pictures/SelectGuestLandingPage/hero_poster/original/59a8a097-dab1-4de8-b6d1-262fde18cfd7.jpg" style="object-fit: cover; width: 100%; height: 100%;"><source type="video/mp4" src="https://a0.muscache.com/v/7a/dc/7adc575c-6b16-484c-ac3b-73a3e20d5e9b/0e6b0dd2086a5ea8ae03eb8c01b9181a_4000k_2.mp4"></video>
     {{!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/KT9zihN24bE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
     <div id="plus-intro">
     <span>INTRODUCING</span>
@@ -243,29 +73,3 @@ drop-down list of at least four (4) cities/provinces in Canada
 </div>
 
         </section>
-    </main>
-   
-
-
-<!-- JQUERY, BOOTSTRAP, MOMENT, DATEPICKER, POPPER JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-<script>
-
-$('.sign-up').click((event) => {
-
-})
-
-Handlebars.registerHelper("signupLink", (text, url) => {
-    text = Handlebars.Utils.escapeExpression(text);
-    url = Handlebars.Utils.escapeExpression(url);
-
-    let theLink = '<a href="' + url + '">' + text + '</a>';
-
-    return new Handlebars.SafeString(theLink);
-});
-
-    </script>
-
-</body>

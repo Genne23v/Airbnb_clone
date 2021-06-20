@@ -23,18 +23,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/room-listing", (req, res) => {
-  const headers = req.headers;
-
   res.render("room-listing", {
     layout: false,
   });
 });
 
-app.get("/practice", (req, res) => {
-  res.render("_main", {
-    layout: false,
-  });
-});
 app.use((req, res) => {
   res.status(404).send("Page Not Found");
 });

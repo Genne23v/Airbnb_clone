@@ -15,7 +15,7 @@
     <header>
         <div class="container-fluid">
         <div class="navbar navbar-expand-lg navbar-light bg-transparent">
-                <a class="navbar-brand" href="#"><img src="./images/logo@2x.png" style="width: 150px;" ></a>
+                <a class="navbar-brand" href="#"><img src="./images/logo@2x.png" style="width: 130px;" ></a>
             <div class="nav-right">
             <a href="#" style="color: white; display: block">Become a Host</a>
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
@@ -24,10 +24,10 @@
             <div class="nav-item dropdown">
                 <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="d-flex flex-row justify-content-between align-items-center" id="menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="dimgray" class="bi bi-list" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                       </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="dimgray" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                       </svg>    
@@ -61,7 +61,7 @@
 
     </header>
     <div class="intro">
-        <h5>Airbnb <span>2021</span></h5>
+        {{!-- <h5>Airbnb <span>2021</span></h5> --}}
         <h4>Instroducing 100+ upgrades across our entire service</h4>
         <button>Learn what's new</button>
     </div>
@@ -81,12 +81,12 @@
       <div class="form-divider"></div>
       <div class="mb-2 input-daterange">
         <label for="check-in" class="form-label">Check in</label>
-        <input type="text" class="form-control" id="picker" date-provide="datepicker" placeholder="Add dates"></input>
+        <input type="text" class="form-control start-date pickers" id="picker" date-provide="datepicker" placeholder="Add dates"></input>
     </div>
     <div class="form-divider"></div>
     <div class="mb-2 input-daterange">
         <label for="check-out" class="form-label">Check out</label>
-        <input type="text" class="form-control" id="end-date" date-provide="datepicker" placeholder="Add dates"></input>
+        <input type="text" class="form-control end-date" id="end-date" date-provide="datepicker" placeholder="Add dates"></input>
       </div>
       <div class="form-divider"></div>
       <div class="mb-2">
@@ -111,6 +111,7 @@
     
     <main>
        
+       {{>search-bar}}
         {{> explore}}
         
 {{> info}}
@@ -118,6 +119,8 @@
     </main>
 
 {{> footer}}
+
+
 
 <!-- JQUERY, BOOTSTRAP, MOMENT, DATEPICKER, POPPER JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -129,17 +132,46 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+
 $(function() {
-  $('#picker').daterangepicker({
+  $('.pickers').daterangepicker({
     opens: 'center',
     autoApply: true,
     autoUpdateInput: false
   }, function(start, end, label) {
       
-      $('#picker').val(start.format('MMM-DD'));
-      $('#end-date').val(end.format('MMM-DD'));
+      $('.start-date').val(start.format('MMM-DD'));
+      $('.end-date').val(end.format('MMM-DD'));
   });
 });
+
+
+var scroll = window.requestAnimationFrame || function(callback) {
+  window.setTimeout(callback, 1000/60)};
+  var elementToShow = document.querySelector('#second-navbar');
+
+function isElementInViewport(el) {
+
+  var rect = el.getBoundingClientRect();
+  console.log(rect.top);
+  return (rect.top < 50 );
+};
+
+$(document).on('scroll', () => {
+  var secondNavbar= document.querySelector('#second-navbar');
+  if (isElementInViewport(secondNavbar)) {
+    secondNavbar.style.opacity = 1;
+    secondNavbar.style.transform = 'translateZ(0)';
+    //secondNavbar.style.visibility = "visible";
+    //$('#second-navbar').fadeIn();
+  } else {
+    secondNavbar.style.opacity = 0;
+    secondNavbar.style.transform = 'translateZ(50px)';
+    //secondNavbar.style.visibility = "hidden";
+    //$('#second-navbar').fadeOut();
+  }
+});
+
 </script>
 
 </body>

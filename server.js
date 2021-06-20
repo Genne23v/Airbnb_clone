@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/room-listing", (req, res) => {
+  const headers = req.headers;
+
   res.render("room-listing", {
     layout: false,
   });

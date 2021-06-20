@@ -1,0 +1,70 @@
+#second-navbar {
+  position: sticky;
+  top: 0;
+  padding: 0 50px;
+  height: 90px;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgb(0, 0, 0, 0.1) 0px 1px 12px;
+  z-index: 500;
+  transition: all 2s cubic-bezier(0, 1, 0.3, 1);
+}
+
+#second-navbar .navbar {
+  height: 100%;
+}
+
+#second-navbar .nav-item {
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  box-shadow: rgb(0, 0, 0, 0.1) 0px 1px 12px;
+}
+
+#second-navbar .search-form-divider {
+  align-items: center;
+  height: 45px;
+  width: 20px;
+  border-left: 1px solid lightgray;
+}
+#search-bar {
+  height: 60px;
+  margin: 0 40px;
+}
+#search-bar:last-child {
+  padding-right: 5px;
+}
+.nav-item .mb-3 {
+  padding: 15px 40px;
+  margin-bottom: 0px !important;
+}
+
+#second-search {
+  margin: 0;
+}
+#second-search .mb-3 {
+  width: 36%;
+  padding: 0 15px;
+}
+#second-search .mb-2 {
+  width: 21%;
+}
+#second-search .form-label {
+  margin: 0;
+  font-size: 12px;
+  padding: 0 8px;
+}
+#second-search .form-control {
+  font-size: 14px;
+  color: dimgray;
+  padding: 0 8px;
+}
+
+#second-search > .daterangepicker > td.active,
+#second-search > .daterangepicker > td.active:hover {
+  background-color: #ff7779;
+}
+
+#second-search > .daterangepicker > td.end-date {
+  background-color: #ff7779;
+}

@@ -3,7 +3,6 @@
 body {
   font-family: "Roboto", Helvetica;
   margin: 0;
-  color: dimgray;
 }
 
 .modal-content {
@@ -22,7 +21,7 @@ body {
 
 .registration-form a:link {
   text-decoration: none;
-  color: #7dbfe7;
+  color: #62b2e4;
   font-weight: 600;
 }
 

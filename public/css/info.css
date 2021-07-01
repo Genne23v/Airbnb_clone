@@ -106,7 +106,7 @@ body {
   margin: 90px 4em;
 }
 #luxe-bg {
-  background-image: url("../images/luxe/luxe-bg.jpg") !important;
+  background-image: url("/images/luxe/luxe-bg.jpg") !important;
   background-size: cover;
   height: 600px;
   border-radius: 20px 20px 0 0;

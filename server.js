@@ -10,7 +10,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 const express = require("express"),
   app = express(),
   handlebars = require("express-handlebars"),
-  expressValidator = require("express-validator"),
+  { check, validationResult } = require("express-validator"),
   bodyParser = require("body-parser"),
   //connectFlash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
@@ -31,7 +31,7 @@ app.engine(
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(expressValidator());
+//app.use(expressValidator());
 app.use(cookieParser("secret"));
 app.use(
   session({

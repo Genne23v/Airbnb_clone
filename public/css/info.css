@@ -7,10 +7,10 @@ body {
 
 /* HOW IT WORKS */
 #how-it-works {
-  padding: 200px;
+  padding: 4em;
 }
 #how-it-works h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: 600;
   text-align: center;
   display: block;
@@ -39,7 +39,7 @@ body {
 }
 .instruction p,
 .instruction-reverse p {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 /* AIRBNB PLUS */
@@ -54,7 +54,7 @@ body {
 #plus-intro {
   color: white;
   text-align: center;
-  margin-top: 25%;
+  margin: auto 0;
   z-index: 200;
 }
 #plus-intro span {
@@ -67,15 +67,16 @@ body {
 #plus-intro h3 {
   font-size: 2.5em;
   font-weight: 400;
-  padding: 50px 0;
+  padding: 0.6rem 0 1rem;
   margin-bottom: 0;
 }
 #plus-intro button {
   color: rgb(65, 65, 65);
   border: 0px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 5px;
-  padding: 15px 25px;
+  padding: 0.6rem 1.2rem;
 }
 .plus {
   display: inline-block !important;
@@ -92,17 +93,17 @@ body {
   margin: 90px auto;
 }
 #plus-desc h2 {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: 400;
 }
 #plus-desc p {
-  font-size: 1.2em;
+  font-size: 1.6em;
   font-weight: 300;
 }
 
 /* AIRBNB LUXE */
 .jumbotron {
-  margin: 90px 140px;
+  margin: 90px 4em;
 }
 #luxe-bg {
   background-image: url("../images/luxe/luxe-bg.jpg") !important;
@@ -115,17 +116,16 @@ body {
   height: auto;
 }
 .luxe-title {
-  width: 30%;
-  margin-top: 15%;
-  padding: 0 40px;
+  width: 33%;
+  margin: auto 2%;
+  padding: 0 1em;
 }
 .jumbotron svg {
-  margin-top: 40px;
   padding: 0;
 }
 .jumbotron h1 {
   color: white;
-  font-size: 40px;
+  font-size: 2em;
   font-weight: 500;
   padding: 0;
 }

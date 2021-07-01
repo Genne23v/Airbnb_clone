@@ -9,7 +9,7 @@ footer {
   border-top: 1px solid lightgray;
   background-color: rgb(243, 243, 243);
 }
-.footer-links {
+#footer-links {
   display: flex;
   flex-direction: row;
 }
@@ -35,7 +35,6 @@ footer {
 }
 
 .footer-section a {
-  /* flex:1; */
   line-height: 2;
   text-decoration: none;
   color: rgb(90, 90, 90);

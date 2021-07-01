@@ -77,3 +77,10 @@ body {
 .form-select {
   color: dimgray;
 }
+
+.alert {
+  border-radius: 8px;
+}
+.alert > p {
+  margin-bottom: 0;
+}

@@ -10,7 +10,7 @@ body {
 .bg-img {
   background-image: url("../images/Backgound@2x.jpg");
   background-size: cover;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 /* HEADER */
@@ -27,6 +27,12 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.logo {
+  background-image: url("../images/logo@2x.png");
+  background-size: cover;
+  width: 130px;
+  height: 40px;
 }
 .navbar a {
   text-decoration: none;
@@ -75,13 +81,14 @@ header {
 .intro {
   display: inline-block;
   width: 25%;
+  height: 10%;
   margin-top: 11%;
   margin-left: 50px;
   margin-right: 0;
   color: white;
 }
 .intro h4 {
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 .intro h5 > span {
   display: inline-block;
@@ -92,11 +99,12 @@ header {
   font-weight: 600;
 }
 .intro h5 {
-  font-size: 28px;
+  font-size: 1.5rem;
 }
 .intro button {
   background-color: #d3691b;
   color: white;
+  font-size: 0.8rem;
   font-weight: 400;
   padding: 6px 18px 4px;
   border-radius: 8px;
@@ -168,9 +176,10 @@ header {
 }
 #room-search .submit-btn {
   background-color: #d3691b;
+  float: right;
   color: white;
   height: 61px;
-  width: 100px;
+  width: 75%;
   border-radius: 0 15px 15px 0;
 }
 #room-search option {
@@ -221,4 +230,64 @@ header {
 /* SIGN UP MODAL */
 .modal-backdrop {
   z-index: 1;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 799px) {
+  .bg-img {
+    background-image: url("/images/Backgound-mobile.jpg");
+  }
+  header {
+    padding: 10px;
+  }
+  .logo {
+    background-image: url("/images/logo_cut.png");
+    background-repeat: no-repeat;
+    width: 40px;
+  }
+  .become-host {
+    display: none;
+  }
+  .nav-right > svg {
+    display: none;
+  }
+  .intro {
+    width: 55%;
+    margin-top: 25%;
+  }
+  .intro h4 {
+    font-size: 2rem;
+  }
+  #room-search {
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    right: 0;
+  }
+  #second-navbar {
+    padding: 0 10px !important;
+  }
+  #search-bar {
+    margin: 0 15px;
+  }
+  .mid-logo {
+    background-image: url("/images/logo_cut.png");
+    background-repeat: no-repeat;
+    width: 40px;
+  }
+  #footer-links {
+    flex-direction: column !important;
+  }
+  #footer-bottom {
+    flex-direction: column-reverse !important;
+  }
+  #footer-bottom > * {
+    margin-bottom: 10px;
+  }
+  .footer-section {
+    padding: 2em 3em 1em !important;
+  }
+}
+
+@media (min-width: 800px) {
 }

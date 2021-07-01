@@ -9,7 +9,12 @@
   z-index: 500;
   transition: all 2s cubic-bezier(0, 1, 0.3, 1);
 }
-
+.mid-logo {
+  background-image: url("../images/airbnb_pink_lg.png");
+  background-size: cover;
+  width: 130px;
+  height: 40px;
+}
 #second-navbar .navbar {
   height: 100%;
 }
@@ -29,13 +34,13 @@
 }
 #search-bar {
   height: 60px;
-  margin: 0 40px;
+  margin: 0 20px;
 }
 #search-bar:last-child {
   padding-right: 5px;
 }
 .nav-item .mb-3 {
-  padding: 15px 40px;
+  padding: 15px 25px;
   margin-bottom: 0px !important;
 }
 

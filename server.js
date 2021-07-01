@@ -12,7 +12,7 @@ const express = require("express"),
   handlebars = require("express-handlebars"),
   expressValidator = require("express-validator"),
   bodyParser = require("body-parser"),
-  connectFlash = require("connect-flash"),
+  //connectFlash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
   path = require("path");
@@ -43,7 +43,7 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(connectFlash());
+//app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.message = req.session.message; //flash();
   delete req.session.message;

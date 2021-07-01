@@ -270,11 +270,11 @@ header {
   #search-bar {
     margin: 0 15px;
   }
-  .mid-logo {
-    background-image: url("/images/logo_cut.png");
+  /* .mid-logo {
+    background-image: url("/images/airbnb_pink_lg-cut.png");
     background-repeat: no-repeat;
     width: 40px;
-  }
+  } */
   #footer-links {
     flex-direction: column !important;
   }

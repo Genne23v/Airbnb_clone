@@ -86,9 +86,12 @@ header {
   margin-left: 50px;
   margin-right: 0;
   color: white;
+  white-space: nowrap;
 }
 .intro h4 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
 }
 .intro h5 > span {
   display: inline-block;
@@ -96,7 +99,7 @@ header {
   color: white;
   padding: 4px 12px 2px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .intro h5 {
   font-size: 1.5rem;
@@ -104,7 +107,7 @@ header {
 .intro button {
   background-color: #d3691b;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   padding: 6px 18px 4px;
   border-radius: 8px;
@@ -151,7 +154,7 @@ header {
   font-weight: 200;
 }
 #room-search .form-label {
-  margin: 0;
+  margin-bottom: 4px;
   padding: 0 8px;
   font-size: 12px;
 }
@@ -233,12 +236,13 @@ header {
 }
 
 /* MEDIA QUERIES */
-@media only screen and (max-width: 799px) {
+@media (max-width: 799px) {
   .bg-img {
     background-image: url("/images/Backgound-mobile.jpg");
   }
+  /* MAIN PAGE */
   header {
-    padding: 10px;
+    padding: 20px;
   }
   .logo {
     background-image: url("/images/logo_cut.png");
@@ -254,18 +258,28 @@ header {
   .intro {
     width: 55%;
     margin-top: 25%;
+    margin-left: 20px;
   }
   .intro h4 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   #room-search {
     width: 90vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    /* margin-left: 5vw;
+    margin-right: 5vw; */
     right: 0;
   }
+  #second-navbar > .navbar > .navbar-brand,
+  #second-navbar > .navbar > .nav-right {
+    display: none;
+  }
+  /* SECOND SEARCH BAR */
   #second-navbar {
     padding: 0 10px !important;
+  }
+  #second-search {
+    width: 100% !important ;
+    margin: 0 !important;
   }
   #search-bar {
     margin: 0 15px;
@@ -275,6 +289,55 @@ header {
     background-repeat: no-repeat;
     width: 40px;
   } */
+  /* INFO */
+  #how-it-works {
+    padding: 2em !important;
+  }
+  .instruction {
+    padding-right: 30px !important;
+  }
+  .instruction-reverse {
+    padding-left: 30px !important;
+  }
+  .instruction h3 {
+    font-size: 1.5em;
+  }
+  .instruction p,
+  .instruction-reverse p {
+    font-size: 1em !important;
+  }
+  /* AIRBNB PLUS */
+  #plus-intro span {
+    font-size: 0.8em !important;
+  }
+  #plus-intro h3 {
+    font-size: 1.5em !important;
+  }
+  #plus-intro button {
+    padding: 0.4rem 1rem !important;
+  }
+  #plus-intro button > svg {
+    height: 16px !important;
+    width: 16px !important;
+  }
+
+  #plus-desc h2 {
+    font-size: 2em !important;
+  }
+  #plus-desc p {
+    font-size: 1.2em !important;
+  }
+  /* AIRBNB LUXE */
+  .jumbotron {
+    margin: 90px 1.5em !important;
+  }
+  .jumbotron .lead {
+    font-size: 1.4em !important;
+  }
+  .jumbotron p {
+    font-size: 0.9em !important;
+  }
+  /* FOOTER */
   #footer-links {
     flex-direction: column !important;
   }
@@ -287,7 +350,4 @@ header {
   .footer-section {
     padding: 2em 3em 1em !important;
   }
-}
-
-@media (min-width: 800px) {
 }

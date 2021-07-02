@@ -88,17 +88,19 @@ body {
   font-size: 0.8em;
 }
 #plus-desc {
-  width: 690px;
+  width: 90%;
   text-align: center;
   margin: 90px auto;
 }
 #plus-desc h2 {
   font-size: 2.5em;
   font-weight: 400;
+  word-wrap: normal;
 }
 #plus-desc p {
   font-size: 1.6em;
   font-weight: 300;
+  word-wrap: normal;
 }
 
 /* AIRBNB LUXE */
@@ -108,17 +110,15 @@ body {
 #luxe-bg {
   background-image: url("/images/luxe/luxe-bg.jpg") !important;
   background-size: cover;
-  height: 600px;
+  aspect-ratio: 16/9;
   border-radius: 20px 20px 0 0;
 }
-#luxe-bg img {
-  width: auto;
-  height: auto;
-}
+
 .luxe-title {
   width: 33%;
   margin: auto 2%;
   padding: 0 1em;
+  white-space: nowrap;
 }
 .jumbotron svg {
   padding: 0;
@@ -128,6 +128,10 @@ body {
   font-size: 2em;
   font-weight: 500;
   padding: 0;
+}
+.display-5 {
+  margin-top: 5px;
+  line-height: 1.1;
 }
 #luxe-intro {
   border-radius: 0 0 20px 20px;

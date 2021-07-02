@@ -1,7 +1,7 @@
 #second-navbar {
   position: sticky;
   top: 0;
-  padding: 0 50px;
+  padding: 0 40px;
   height: 90px;
   width: 100%;
   background-color: white;
@@ -9,17 +9,25 @@
   z-index: 500;
   transition: all 2s cubic-bezier(0, 1, 0.3, 1);
 }
+.navbar-brand {
+  margin-right: 8px;
+}
 .mid-logo {
   background-image: url("../images/airbnb_pink_lg-cut.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 130px;
+  width: 50px;
   height: 40px;
 }
 #second-navbar .navbar {
   height: 100%;
 }
-
+/* #second-search .mb-3 {
+  width: 200px;
+}
+#second-search .mb-2 {
+  width: 15%;
+} */
 #second-navbar .nav-item {
   font-weight: 600;
   border: 1px solid lightgray;
@@ -30,12 +38,12 @@
 #second-navbar .search-form-divider {
   align-items: center;
   height: 45px;
-  width: 20px;
+  width: 10px;
   border-left: 1px solid lightgray;
 }
 #search-bar {
   height: 60px;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 #search-bar:last-child {
   padding-right: 5px;
@@ -46,6 +54,7 @@
 }
 
 #second-search {
+  width: 70%;
   margin: 0;
 }
 #second-search .mb-3 {

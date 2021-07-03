@@ -6,6 +6,7 @@ body {
 }
 
 .modal-content {
+  width: 600px;
   border-radius: 25px;
 }
 .registration-form {
@@ -14,14 +15,18 @@ body {
   margin: 0 auto;
   padding: 30px 20px;
 }
-
+.sign-up-success {
+  width: 560px;
+  display: block;
+  margin: 0 auto;
+}
 .social-media-login {
   text-align: center;
 }
 
 .registration-form a:link {
   text-decoration: none;
-  color: #62b2e4;
+  /* color: #62b2e4; */
   font-weight: 600;
 }
 
@@ -69,7 +74,7 @@ body {
 }
 
 .form-row {
-  width: 650px;
+  width: 560px;
   display: flex;
   justify-content: space-between;
 }

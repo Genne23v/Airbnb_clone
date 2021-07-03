@@ -13,19 +13,36 @@ body {
   margin: 0;
   margin-top: 20px;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+#explore-section > .row {
+  display: grid;
+  overflow-x: auto;
+  gap: 15px;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-auto-flow: column;
+  white-space: nowrap;
+}
+.row::-webkit-scrollbar {
+  display: none;
 }
 .suggestion-thumbnail {
+  width: 130px;
+  height: 100px;
   border-radius: 20px;
 }
 .explore-each {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 298px;
-  margin: 10px 20px 10px 0;
   padding: 0;
 }
+.explore-suggestion h5 {
+  font-size: 1em;
+}
 .explore-suggestion {
-  padding-left: 20px;
-  width: 172px;
+  padding-left: 10px;
+  width: 176px;
 }

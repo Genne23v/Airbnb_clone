@@ -50,6 +50,9 @@ header {
 #navbarDropdown {
   padding: 0.4rem 0.6rem;
 }
+.dropdown-menu[data-bs-popper] {
+  left: -60% !important;
+}
 .bi-person-circle,
 .bi-list {
   color: dimgray;
@@ -67,7 +70,7 @@ header {
   content: none;
 }
 .dropdown-menu[data-bs-popper] {
-  left: -50%;
+  left: -60%;
 }
 .dropdown-menu {
   border-radius: 15px;
@@ -124,7 +127,7 @@ header {
   align-items: center;
   background-color: rgba(106, 74, 50, 0.8);
   /* #414141 */
-  width: 55vw;
+  width: 660px;
   height: 61px;
   top: 86%;
   right: 3em;
@@ -234,6 +237,12 @@ header {
 .modal-backdrop {
   z-index: 1;
 }
+#register-modal {
+  width: 600px;
+}
+.registration-form > .form-row {
+  width: 560px;
+}
 
 /* MEDIA QUERIES */
 @media (max-width: 799px) {
@@ -264,14 +273,38 @@ header {
     font-size: 2.5rem;
   }
   #room-search {
-    width: 90vw;
-    /* margin-left: 5vw;
-    margin-right: 5vw; */
+    width: 96%;
+    margin: 0 auto;
     right: 0;
   }
+  #room-search .form-divider {
+    width: 10px;
+  }
+
   #second-navbar > .navbar > .navbar-brand,
   #second-navbar > .navbar > .nav-right {
     display: none;
+  }
+  #register-modal {
+    width: 400px;
+  }
+  .registration-form {
+    width: 400px !important;
+  }
+  .registration-form > .form-row {
+    width: 360px !important;
+  }
+  #login-modal {
+    left: 50 !important;
+  }
+  #inputMonth {
+    padding-right: 60px !important;
+  }
+  #inputDay {
+    padding-right: 30px !important;
+  }
+  #inputYear {
+    padding-right: 50px !important;
   }
   /* SECOND SEARCH BAR */
   #second-navbar {
@@ -282,13 +315,32 @@ header {
     margin: 0 !important;
   }
   #search-bar {
-    margin: 0 15px;
+    margin: 0px;
   }
   /* .mid-logo {
     background-image: url("/images/airbnb_pink_lg-cut.png");
     background-repeat: no-repeat;
     width: 40px;
   } */
+
+  /* EXPLORE */
+  #promo-section {
+    padding: 50px 20px !important;
+  }
+  #explore-section > .row {
+    gap: 25px;
+  }
+  #explore-section > .row {
+    grid-template-columns: repeat(4, 380px) 100% !important;
+  }
+
+  .suggestion-thumbnail {
+    width: 170px !important;
+    aspect-ratio: 16/9;
+  }
+  .explore-suggestion {
+    width: 200px !important;
+  }
   /* INFO */
   #how-it-works {
     padding: 2em !important;

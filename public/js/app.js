@@ -25,10 +25,20 @@ const displayError = (message) => {
   const messages = message.message;
   const errors = formResponse(type, messages);
 
-  $(".svr-res").prepend(errors);
+  if (type === "success") {
+    $(".registration-form")
+      .find("*")
+      .css("position", "absolute")
+      .css("top", "10000px");
+    $(".sign-up-success").prepend(errors).css("margin-top", "60px");
+  } else {
+    $(".svr-res").prepend(errors);
+  }
 };
-$('button[type="submit"]').on("click", (e) => {
+
+$(".sign-up").on("click", (e) => {
   e.preventDefault();
+  $(".sign-up-success").empty();
   $(".svr-res").empty();
 
   const email = $('input[name="email"]').val();
@@ -55,5 +65,7 @@ $('button[type="submit"]').on("click", (e) => {
 $(document).ready(function () {
   $("#registration-modal").on("hidden.bs.modal", function () {
     $(".svr-res").empty();
+    $(".sign-up-success").empty().css("margin-top", "0");
+    $(".registration-form").find("*").css("position", "static");
   });
 });

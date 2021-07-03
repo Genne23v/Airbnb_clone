@@ -3,11 +3,21 @@ const displayLogInError = (message) => {
   const messages = message.message;
   const errors = formResponse(type, messages);
 
-  $(".svr-logIn-res").prepend(errors);
+  if (type === "success") {
+    $(".login-form")
+      .find("*")
+      .css("position", "absolute")
+      .css("top", "10000px");
+    $(".log-in-success").prepend(errors).css("margin-top", "60px");
+  } else {
+    $(".svr-logIn-res").prepend(errors);
+  }
 };
+
 $(".log-in").on("click", (e) => {
   e.preventDefault();
   $(".svr-logIn-res").empty();
+  $(".log-in-success").empty();
 
   const email = $("#logIn-email").val();
   const password = $("#logIn-password").val();
@@ -22,14 +32,14 @@ $(".log-in").on("click", (e) => {
       password: password,
     }),
   }).done(function (data) {
-    console.log("done");
     displayLogInError(data);
   });
 });
 
 $(document).ready(function () {
   $("#login-modal").on("hidden.bs.modal", function () {
-    console.log("modal close triggered");
     $(".svr-logIn-res").empty();
+    $(".log-in-success").empty().css("margin-top", "0");
+    $(".login-form").find("*").css("position", "static");
   });
 });

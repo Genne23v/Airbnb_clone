@@ -9,9 +9,15 @@ body {
   border-radius: 20px;
   margin-right: 0;
 }
+
+.log-in-success {
+  width: 360px;
+  display: block;
+  margin: 0 auto;
+}
 #login-modal {
-  top: 65px;
-  left: 500px;
+  top: 45px;
+  left: 37vw;
 }
 .login-form {
   width: 400px;
@@ -25,7 +31,6 @@ body {
 
 .login-form a:link {
   text-decoration: none;
-  color: #24a0ed;
   font-weight: 600;
 }
 
@@ -73,7 +78,7 @@ body {
 }
 
 .form-row {
-  width: 400px;
+  /* width: 400px; */
   display: flex;
   justify-content: space-between;
 }

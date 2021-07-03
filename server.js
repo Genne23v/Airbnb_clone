@@ -1,16 +1,11 @@
-const {
-  validate,
-  register,
-  redirectView,
-  logInValidate,
-} = require("./controllers/usersController");
-const usersController = require("./controllers/usersController");
+const homeController = require("./controllers/homeController");
 
 const HTTP_PORT = process.env.PORT || 8080;
 const express = require("express"),
   app = express(),
+  router = require("./routes/index"),
   handlebars = require("express-handlebars"),
-  { check, validationResult } = require("express-validator"),
+  expressValidator = require("express-validator"),
   bodyParser = require("body-parser"),
   //connectFlash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
@@ -31,7 +26,7 @@ app.engine(
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(expressValidator());
+app.use(expressValidator());
 app.use(cookieParser("secret"));
 app.use(
   session({
@@ -50,26 +45,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.render("main", {
-    layout: false,
-  });
-});
-
-app.post("/register", (req, res) => {
-  validate(req, res);
-});
-
-app.post("/logIn", (req, res) => {
-  console.log("login start");
-  logInValidate(req, res);
-});
-
-app.get("/room-listing", (req, res) => {
-  res.render("room-listing", {
-    layout: false,
-  });
-});
+app.use("/", router);
 
 app.use((req, res) => {
   res.status(404).send("Page Not Found");

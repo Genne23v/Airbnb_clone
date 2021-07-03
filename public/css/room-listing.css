@@ -13,6 +13,7 @@ header {
   height: 90px;
   background-color: white;
   box-shadow: rgb(0, 0, 0, 0.1) 0px 1px 12px;
+  z-index: 200;
 }
 .container-fluid {
   height: 100%;
@@ -25,10 +26,10 @@ header {
   margin-right: 8px;
 }
 .logo {
-  background-image: url("/images/airbnb_pink_lg-cut.png");
+  background-image: url("/images/airbnb_pink_lg.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 50px;
+  width: 140px;
   height: 50px;
 }
 #search-bar {
@@ -81,6 +82,12 @@ header {
 #navbarDropdown {
   padding: 0.4rem 0.6rem;
 }
+.dropdown-menu[data-bs-popper] {
+  left: -60%;
+}
+.dropdown-menu {
+  border-radius: 15px;
+}
 .bi-person-circle,
 .bi-list {
   color: dimgray;
@@ -93,14 +100,17 @@ header {
 #search-result {
   padding: 50px;
 }
+.row > * {
+  padding: 0 !important;
+}
 .room-card {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
 .room-photo {
-  max-width: 360px;
-  height: 210px;
+  max-width: 380px;
+  aspect-ratio: 16/9;
 }
 .room-photo img {
   object-fit: cover;
@@ -120,17 +130,19 @@ header {
 .room-info h5 {
   font-weight: 300;
   font-size: 18px;
+  margin-bottom: 4px;
 }
 
 .room-info h4 {
   font-weight: 500;
   font-size: 20px;
+  margin-bottom: 12px;
 }
 
 .room-info p {
   color: dimgray;
   font-size: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .room-rate .rate {
@@ -141,9 +153,43 @@ header {
 }
 
 /* MEDIA QUERY */
-@media (max-width: 799px) {
+
+@media (max-width: 999px) {
+  .logo {
+    background-image: url("/images/airbnb_pink_lg-cut.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50px;
+  }
   #search-bar {
-    width: 95%;
+    width: 70%;
+  }
+  .become-host {
+    display: none;
+  }
+  .nav-right > svg {
+    display: none;
+  }
+  /* ROOM LIST */
+  #search-result {
+    padding: 25px;
+  }
+  .no-gutters {
+    flex-direction: column;
+    --bs-gutter-x: 0 !important;
+  }
+  .room-card {
+    flex-direction: row;
+    margin: 8px;
+  }
+
+  .room-info {
+    margin-left: 15px;
+  }
+}
+@media (max-width: 699px) {
+  #search-bar {
+    width: 100%;
   }
   .navbar-brand {
     display: none;
@@ -151,8 +197,24 @@ header {
   .nav-right {
     display: none;
   }
-  /* ROOM LIST */
-
+  .room-card {
+    flex-direction: column;
+    width: 88%;
+    margin: 15px auto;
+  }
+  .room-photo img {
+    aspect-ratio: 16/9;
+  }
+  .room-info {
+    position: relative;
+    top: 10px;
+    margin-left: 0px;
+    padding-top: 8px;
+  }
+  .room-photo,
+  .room-info {
+    max-width: 500px;
+  }
   /* FOOTER */
   #footer-links {
     flex-direction: column !important;

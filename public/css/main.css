@@ -299,6 +299,23 @@ header {
     width: 10px;
   }
 
+  .daterangepicker {
+    width: 375px !important;
+    height: 690px !important;
+    padding: 15px 0 !important;
+  }
+  .daterangepicker .drp-calendar {
+    max-width: 360px !important;
+    padding: 0 !important;
+    margin: 0 8px !important;
+  }
+
+  .daterangepicker .calendar-table th,
+  .daterangepicker .calendar-table td {
+    font-size: 14px !important;
+    width: 45px !important;
+    height: 36px !important;
+  }
   #second-navbar > .navbar > .navbar-brand,
   #second-navbar > .navbar > .nav-right {
     display: none;

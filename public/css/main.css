@@ -82,10 +82,11 @@ header {
 }
 
 .intro {
+  position: absolute;
   display: inline-block;
   width: 25%;
   height: 10%;
-  margin-top: 11%;
+  margin-top: 17vh;
   margin-left: 50px;
   margin-right: 0;
   color: white;
@@ -94,7 +95,7 @@ header {
 .intro h4 {
   font-size: 3.5rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 .intro h5 > span {
   display: inline-block;
@@ -185,7 +186,7 @@ header {
   float: right;
   color: white;
   height: 61px;
-  width: 75%;
+  width: 80%;
   border-radius: 0 15px 15px 0;
 }
 #room-search option {
@@ -245,7 +246,7 @@ header {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 799px) {
+@media screen and (max-width: 799px) {
   .bg-img {
     background-image: url("/images/Backgound-mobile.jpg");
   }
@@ -266,16 +267,27 @@ header {
   }
   .intro {
     width: 55%;
-    margin-top: 25%;
+    margin-top: 17vh;
     margin-left: 20px;
   }
   .intro h4 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
   #room-search {
-    width: 96%;
+    width: 98%;
     margin: 0 auto;
-    right: 0;
+    bottom: 0;
+    right: 0.5rem;
+  }
+  #room-search .mb-3 {
+    width: 22%;
+  }
+  #room-search .mb-2 {
+    width: 19%;
+  }
+  .form-label,
+  .form-control {
+    padding: 0 4px !important;
   }
   #room-search .form-divider {
     width: 10px;
@@ -315,7 +327,7 @@ header {
     margin: 0 !important;
   }
   #search-bar {
-    margin: 0px;
+    margin: 0px !important;
   }
   /* .mid-logo {
     background-image: url("/images/airbnb_pink_lg-cut.png");

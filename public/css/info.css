@@ -20,6 +20,9 @@ body {
   flex-direction: row;
   margin-top: 65px;
 }
+.demo-video {
+  margin: auto 0;
+}
 .demo-reverse {
   flex-direction: row-reverse;
   display: flex;

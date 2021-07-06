@@ -23,6 +23,9 @@ header {
   width: 100%;
   padding: 10px 50px;
 }
+.container-fluid {
+  --bs-gutter-x: 0;
+}
 .navbar {
   display: flex;
   flex-direction: row;
@@ -248,7 +251,7 @@ header {
 /* MEDIA QUERIES */
 @media screen and (max-width: 799px) {
   .bg-img {
-    background-image: url("/images/Backgound-mobile.jpg");
+    background-image: url("/images/Backgound-800x585.jpg");
   }
   /* MAIN PAGE */
   header {
@@ -261,6 +264,9 @@ header {
   }
   .become-host {
     display: none;
+  }
+  .nav-right > * {
+    margin: 0px;
   }
   .nav-right > svg {
     display: none;
@@ -277,7 +283,7 @@ header {
     width: 98%;
     margin: 0 auto;
     bottom: 0;
-    right: 0.5rem;
+    right: 0.3rem;
   }
   #room-search .mb-3 {
     width: 22%;
@@ -301,22 +307,28 @@ header {
     width: 400px;
   }
   .registration-form {
-    width: 400px !important;
+    width: 375px !important;
+    margin: 0;
+    padding: 20px 10px !important;
   }
   .registration-form > .form-row {
-    width: 360px !important;
+    width: 355px !important;
   }
-  #login-modal {
-    left: 50 !important;
+  .modal-dialog {
+    width: 400px;
+    margin: 0.5rem auto;
   }
   #inputMonth {
-    padding-right: 60px !important;
+    padding-right: 50px !important;
   }
   #inputDay {
     padding-right: 30px !important;
   }
   #inputYear {
-    padding-right: 50px !important;
+    padding-right: 40px !important;
+  }
+  #login-modal {
+    left: 0 !important;
   }
   /* SECOND SEARCH BAR */
   #second-navbar {
@@ -413,5 +425,11 @@ header {
   }
   .footer-section {
     padding: 2em 3em 1em !important;
+  }
+  @media (max-width: 499px) {
+    .bg-img {
+      background-image: url("/images/Backgound-500x585.jpg");
+      height: 100vh;
+    }
   }
 }

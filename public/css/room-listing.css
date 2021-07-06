@@ -17,7 +17,6 @@ header {
 }
 .container-fluid {
   height: 100%;
-  padding: 0;
 }
 .navbar {
   height: 100%;
@@ -153,6 +152,15 @@ header {
 }
 
 /* MEDIA QUERY */
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 600px !important;
+  }
+  #login-modal.modal-dialog {
+    width: 400px !important;
+    margin: 0 auto;
+  }
+}
 @media screen and (max-width: 999px) {
   .logo {
     background-image: url("/images/airbnb_pink_lg-cut.png");
@@ -168,6 +176,17 @@ header {
   }
   .nav-right > svg {
     display: none;
+  }
+  #registration-modal.modal-dialog {
+    max-width: 600px !important;
+  }
+
+  #login-modal.modal-dialog {
+    width: 400px !important;
+    margin: 0 auto;
+  }
+  .modal-content {
+    margin: 0 auto !important;
   }
   /* ROOM LIST */
   #search-result {
@@ -189,6 +208,9 @@ header {
 @media (max-width: 699px) {
   header {
     padding: 0 10px;
+  }
+  #login-modal {
+    left: 0 !important;
   }
   .nav-item .mb-3,
   .mb-4 {

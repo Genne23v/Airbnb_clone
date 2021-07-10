@@ -4,6 +4,8 @@ const HTTP_PORT = process.env.PORT || 8080;
 const express = require("express"),
   app = express(),
   router = require("./routes/index"),
+  mongoose = require("mongoose"),
+  bcrypt = require("bcrypt"),
   handlebars = require("express-handlebars"),
   expressValidator = require("express-validator"),
   bodyParser = require("body-parser"),
@@ -23,6 +25,17 @@ app.engine(
     partialsDir: path.join(__dirname, "/views/partials"),
   })
 );
+
+await mongoose.connect("", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+});
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("Successfully connected to MongdoDB using Mongoose!");
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());

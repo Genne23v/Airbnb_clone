@@ -335,6 +335,9 @@ header {
     width: 400px;
     margin: 0.5rem auto;
   }
+  .sign-up-success {
+    width: 355px !important;
+  }
   #inputMonth {
     padding-right: 50px !important;
   }

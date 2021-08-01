@@ -32,6 +32,7 @@ $(".log-in").on("click", (e) => {
       password: password,
     }),
   }).done(function (data) {
+    console.log(`Response: ${data.loggedIn}`);
     displayLogInError(data);
   });
 });
@@ -41,5 +42,6 @@ $(document).ready(function () {
     $(".svr-logIn-res").empty();
     $(".log-in-success").empty().css("margin-top", "0");
     $(".login-form").find("*").css("position", "static");
+    location.reload();
   });
 });

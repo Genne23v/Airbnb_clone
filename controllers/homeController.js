@@ -1,6 +1,6 @@
 nodeMailer = require("nodemailer");
-const passport = require("passport"),
-  User = require("../models/user");
+// const passport = require("passport"),
+//   User = require("../models/user");
 
 const getUserParams = (body) => {
   return {

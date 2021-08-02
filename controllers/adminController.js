@@ -83,7 +83,7 @@ module.exports = {
   update: (req, res, next) => {},
   deleteRoom: (req, res, next) => {},
   redirectView: (req, res, next) => {
-    console.log(`res.locals.newRoom: ${res.locals.newRoom.title}`);
+    console.log(`res.locals.newRoom: ${res.locals.newRoom}`);
     let redirectPath = res.locals.redirect;
     if (redirectPath) {
       console.log(`Redirecting to ${redirectPath}`);

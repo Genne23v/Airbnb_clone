@@ -15,9 +15,6 @@ const express = require("express"),
   session = require("express-session"),
   path = require("path");
 const User = require("./models/user");
-//  passport = require("passport"),
-// passportLocalMongoose = require("passport-local-mongoose"),
-//const LocalStrategy = require("passport-local").Strategy;
 
 require("dotenv").config();
 
@@ -100,24 +97,9 @@ app.use(
 //     });
 //   })
 // );
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-// passport.serializeUser((user, done) => {
-//   console.log(`Serialization: ${user.email}`);
-//   done(null, user.email);
-// });
-// passport.deserializeUser((email, done) => {
-//   User.findById(email, (err, user) => {
-//     console.log(`findById(email, user): ${email}, ${user}`);
-//     done(err, user);
-//   });
-// });
 
 app.use(connectFlash());
 app.use((req, res, next) => {
-  //res.locals.loggedIn = req.isAuthenticated();
-  //console.log(`server-req.user: ${req.body.user}`);
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
   next();

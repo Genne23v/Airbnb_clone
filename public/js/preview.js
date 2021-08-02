@@ -17,3 +17,4 @@ $(document).ready(function () {
     imagesPreview(this, "div.photo-preview");
   });
 });
+//to update the master

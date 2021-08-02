@@ -1,7 +1,7 @@
 const router = require("express").Router(),
   adminController = require("../controllers/adminController"),
   homeController = require("../controllers/homeController");
-
+//to update master
 router.get("/", adminController.index);
 router.post(
   "/add-room",

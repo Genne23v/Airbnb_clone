@@ -4,11 +4,13 @@ const formResponse = (type, messages) => {
     style: "padding: .4rem 1rem;",
   });
 
-  if (type !== "success") {
+  console.log(`Each error ${messages.constructor}`);
+  if (messages.constructor === Array) {
     messages.forEach((each) => {
-      const text = $("<p>");
+      let text = $("<p>");
       each = "&#10004 " + each;
       text.html(each);
+      //console.log(`Each msg: ${text}`);
       responseContainer.append(text);
     });
   } else {
@@ -20,19 +22,20 @@ const formResponse = (type, messages) => {
 
   return responseContainer;
 };
-const displayError = (message) => {
+const displayFlash = (message) => {
   const type = message.type;
   const messages = message.message;
-  const errors = formResponse(type, messages);
+  //console.log(messages);
+  const response = formResponse(type, messages);
 
   if (type === "success") {
     $(".registration-form")
       .find("*")
       .css("position", "absolute")
       .css("top", "10000px");
-    $(".sign-up-success").prepend(errors).css("margin-top", "60px");
+    $(".sign-up-success").prepend(response).css("margin-top", "60px");
   } else {
-    $(".svr-res").prepend(errors);
+    $(".svr-res").prepend(response);
   }
 };
 
@@ -57,9 +60,14 @@ $(".sign-up").on("click", (e) => {
       lname: lname,
       password: password,
     }),
-  }).done(function (data) {
-    displayError(data);
-  });
+  })
+    .done(function (data) {
+      console.log(`Response: ${data}`);
+      displayFlash(data);
+    })
+    .fail(function (data, textStatus, errorThrown) {
+      console.log(`Failed: ${data}, ${textStatus}, ${errorThrown}`);
+    });
 });
 
 $(document).ready(function () {
@@ -67,5 +75,6 @@ $(document).ready(function () {
     $(".svr-res").empty();
     $(".sign-up-success").empty().css("margin-top", "0");
     $(".registration-form").find("*").css("position", "static");
+    // location.reload();
   });
 });

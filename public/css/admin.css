@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400&display=swap");
+
+body {
+  font-family: "Roboto", Helvetica;
+  margin: 0;
+}
+#admin-bg {
+  background-image: url("/images/admin/admin_backgound.jpg");
+
+  background-size: cover;
+  /* height: 100%; */
+}
+/* HEADER */
+#admin-logo {
+  background-image: url("/images/logo@2x.png");
+  width: 50px;
+  height: 50px;
+}
+
+.navbar {
+  height: 10%;
+}
+
+#saveNexit,
+#logout {
+  border-radius: 25px;
+  border: none;
+  box-shadow: rgb(0, 0, 0, 0.1) 0px 8px 12px;
+  padding: 8px 16px;
+}
+
+/* FORM */
+.form-label {
+  color: white;
+  font-size: 20px;
+}
+.form-control {
+  border-radius: 5px;
+}
+
+.photo-preview {
+  border: 1px;
+  border-style: dashed;
+  border-color: white;
+  width: 100%;
+
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 8px;
+}
+.photo-preview:hover {
+  border-style: solid;
+}
+.photo-preview svg {
+  display: block;
+  margin: 30% auto;
+}
+#upload-btn {
+  display: block;
+  border: 1px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+}
+
+#upload-btn svg {
+  display: block;
+  margin: 100% auto 0;
+}
+
+#post-room {
+  background-color: #ff385c;
+  border: none;
+  color: white;
+  font-size: 18px;
+}

@@ -47,6 +47,12 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- USER NAME APPEARS HERE -->
+                {{#if loggedIn}}
+<li><a class="dropdown-item" href="#">Hello, <span style="font-weight: 600;">{{userFname.name.fname}}</span></a></li>
+       <li><a class="dropdown-item" href="/room-listing/logout" role="button" aria-hidden="true"
+    >Log Out</a></li>
+                {{else}}
                   <li>
                        <a href="#registration-modal" role="button" class="dropdown-item" data-bs-toggle="modal"
       data-bs-target="#registration-modal"
@@ -54,11 +60,13 @@
       Sign up
     </a>
                       </li>
+                      <!-- LOGOUT BUTTON APPEARS HERE -->
                   <li><a href="#login-modal" role="button" class="dropdown-item" data-bs-toggle="modal"
       data-bs-target="#login-modal" tabindex="-1"
       aria-labelledby="login-modal"
       aria-hidden="true"
     >Log in</a></li>
+    {{/if}}
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Host your home</a></li>
                   <li><a class="dropdown-item" href="#">Host an experience</a></li>

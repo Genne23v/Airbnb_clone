@@ -1,7 +1,7 @@
 {
   "name": "web322-bnb-clone",
   "version": "1.0.0",
-  "description": "WEB322_assign1",
+  "description": "WEB322_assignment",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

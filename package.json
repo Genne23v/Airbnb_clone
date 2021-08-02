@@ -1,7 +1,7 @@
 {
-  "name": "assignment_1",
+  "name": "web322-bnb-clone",
   "version": "1.0.0",
-  "description": "WEB322_assign1",
+  "description": "WEB322_assignment",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -32,5 +32,13 @@
   "devDependencies": {
     "nodemon": "^2.0.7",
     "prettier": "2.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Genne23v/WEB322_assignment1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Genne23v/WEB322_assignment1/issues"
+  },
+  "homepage": "https://github.com/Genne23v/WEB322_assignment1#readme"
 }

@@ -2,21 +2,21 @@ const router = require("express").Router(),
   adminController = require("../controllers/adminController"),
   homeController = require("../controllers/homeController");
 
-router.get("/", adminController.index);
+router.get("/", adminController.adminIndex);
 router.post(
   "/add-room",
   adminController.roomValidate,
   adminController.addRoom,
   adminController.redirectView
 );
-router.get("/update-room", adminController.editRoom);
+router.get("/:id/edit", adminController.editRoom);
 router.put(
-  "/update-room/update",
+  "/:id/update/",
   adminController.update,
   adminController.redirectView
 );
 router.delete(
-  "/remove-room",
+  "/:id/delete",
   adminController.deleteRoom,
   adminController.redirectView
 );

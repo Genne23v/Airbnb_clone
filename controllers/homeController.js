@@ -1,6 +1,7 @@
 nodeMailer = require("nodemailer");
 const passport = require("passport"),
-  User = require("../models/user");
+  User = require("../models/user"),
+  Room = require("../models/room");
 
 const getUserParams = (body) => {
   return {
@@ -15,27 +16,43 @@ const getUserParams = (body) => {
 
 module.exports = {
   index: (req, res, next) => {
-    console.log(`Logged In: ${req.session.loggedIn}`);
-    console.log(`User: ${req.session.user}`);
-    if (req.session.loggedIn) {
-      if (req.session.user.admin) {
-        console.log(`Admin logged in!`);
-        console.log(`res.locals.newRoom: ${res.locals.newRoom}`);
-        res.render("admin", {
-          layout: false,
-          userFname: req.session.user,
-          newRoom: res.locals.newRoom,
-        });
-      } else {
-        res.render("main", {
-          layout: false,
-          loggedIn: req.session.loggedIn,
-          userFname: req.session.user,
-        });
-      }
-    } else {
-      res.render("main", { layout: false });
-    }
+    // console.log(`Logged In: ${req.session.loggedIn}`);
+    // console.log(`User: ${req.session.user}`);
+    Room.find()
+      .distinct("location", (err, result) => {
+        res.locals.locations = result;
+      })
+      .then(() => {
+        if (req.session.loggedIn) {
+          if (req.session.user.admin) {
+            // console.log(`Admin logged in!`);
+            // console.log(`req.session.newRoom in admin: ${req.session.newRoom}`);
+            // //res.redirect("/admin");
+            res.render("admin", {
+              layout: false,
+              userFname: req.session.user,
+              newRoom: req.session.newRoom,
+            });
+          } else {
+            res.render("main", {
+              layout: false,
+              loggedIn: req.session.loggedIn,
+              userFname: req.session.user,
+              locations: res.locals.locations,
+            });
+          }
+        } else {
+          res.render("main", {
+            layout: false,
+            locations: res.locals.locations,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(
+          `Error occurred while fetching room locations - ${err.message}`
+        );
+      });
   },
 
   validate: (req, res, next) => {
@@ -81,12 +98,12 @@ module.exports = {
     });
   },
   create: (req, res, next) => {
-    console.log(`create start`);
+    //console.log(`create start`);
 
     let newUser = new User(getUserParams(req.body));
     User.create(newUser, (err, user) => {
       // User.register(newUser, req.body.password, (err, user) => {
-      console.log(`User: ${user}`);
+      //console.log(`User: ${user}`);
       if (user) {
         res.locals.redirect = "/";
         next();
@@ -101,7 +118,7 @@ module.exports = {
     });
   },
   sendEmail: (req, res, next) => {
-    console.log("Sending email"); // TO BE REMOVED
+    //console.log("Sending email"); // TO BE REMOVED
     //SENDING A WELCOME EMAIL TO USER
     let transporter = nodeMailer.createTransport({
       host: "smtp.mailtrap.io",
@@ -149,11 +166,11 @@ module.exports = {
         res.json(res.locals.flashMessages);
       } else {
         res.locals.currentUser = req.user;
-        console.log(`req.user: ${req.body.email}`);
+        //console.log(`req.user: ${req.body.email}`);
         //next();
 
         //WORKING CODE WITHOUT PASSPORT
-        console.log("Searching for the user..."); //TO BE REMOVED
+        //console.log("Searching for the user..."); //TO BE REMOVED
         User.findOne({ email: userEmail }, (err, user) => {
           if (!user) {
             res.locals.flashMessages = {
@@ -170,10 +187,10 @@ module.exports = {
             };
             res.send(res.locals.flashMessages);
           } else {
-            console.log(`Pre-compare: ${user}`); //TO BE REMOVED
+            //console.log(`Pre-compare: ${user}`); //TO BE REMOVED
 
             user.comparePasswords(userPassword).then((isMatch) => {
-              console.log("Comparing passwords"); //TO BE REMOVED
+              //console.log("Comparing passwords"); //TO BE REMOVED
               if (isMatch) {
                 console.log("User login success!"); //TO BE REMOVED
                 res.locals.flashMessages = {
@@ -182,8 +199,8 @@ module.exports = {
                 };
                 req.session.user = user;
                 req.session.loggedIn = true;
-                console.log(`req.session.user: ${req.session.user}`);
-                console.log(`baseUrl: ${req.baseUrl}`);
+                //console.log(`req.session.user: ${req.session.user}`);
+                //console.log(`baseUrl: ${req.baseUrl}`);
                 res.send(res.locals.flashMessages);
               } else {
                 console.log("Password not match"); //TO BE REMOVED
@@ -203,29 +220,29 @@ module.exports = {
   logout: (req, res, next) => {
     req.logout();
     req.session.destroy();
-    console.log(`req.session: ${req.session}`);
+    //console.log(`req.session: ${req.session}`);
     //req.session.loggedIn = false;
-    console.log(`User has been logged out on ${req.baseUrl}`);
-    console.dir(req.baseUrl);
+    //console.log(`User has been logged out on ${req.baseUrl}`);
+    //console.dir(req.baseUrl);
 
     res.locals.redirect = "/";
     next();
   },
   redirectView: (req, res, next) => {
-    console.log(`Login status: ${res.locals.loggedIn}`);
+    //console.log(`Login status: ${res.locals.loggedIn}`);
     let redirectPath = res.locals.redirect;
     if (redirectPath) {
-      console.log(`Redirecting to ${redirectPath}`);
+      //console.log(`Redirecting to ${redirectPath}`);
       res.redirect(redirectPath);
     } else next();
   },
 
   authenticate: (req, res, next) => {
-    console.log("Authentication started");
+    //console.log("Authentication started");
     const userPassword = req.body.email;
 
     passport.authenticate(userPassword, (err, user, info) => {
-      console.log("User authenticating...");
+      //console.log("User authenticating...");
       if (err) {
         res.locals.flashMessages = {
           type: "danger",
@@ -233,7 +250,7 @@ module.exports = {
         };
         res.json(res.locals.flashMessages);
       } else {
-        console.log(`Authentication: ${user}`);
+        //console.log(`Authentication: ${user}`);
         if (!user) {
           res.locals.flashMessages = {
             type: "danger",
@@ -241,7 +258,7 @@ module.exports = {
           };
           res.json(res.locals.flashMessages);
         } else {
-          console.log(`Login status: ${res.locals.loggedIn}`);
+          //console.log(`Login status: ${res.locals.loggedIn}`);
           res.locals.flashMessages = {
             type: "success",
             message: `Hello, ${user.name.fname}`,
@@ -252,6 +269,16 @@ module.exports = {
         }
       }
     })(req, res, next);
-    console.log(`Authenticated: ${req.isAuthenticated()} `);
+    //console.log(`Authenticated: ${req.isAuthenticated()} `);
+  },
+  searchRooms: (req, res, next) => {
+    console.log("searching requested rooms...");
+
+    Room.find()
+      .lean()
+      .then((rooms) => {})
+      .catch((err) => {
+        console.log(`Error occurred while searching rooms - ${err.message}`);
+      });
   },
 };

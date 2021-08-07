@@ -13,6 +13,7 @@ const express = require("express"),
   connectFlash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
+  methodOverride = require("method-override"),
   path = require("path");
 const User = require("./models/user");
 
@@ -27,6 +28,15 @@ app.engine(
     defaultLayout: "main",
     layoutDir: __dirname + "/views/layouts",
     partialsDir: path.join(__dirname, "/views/partials"),
+    helpers: {
+      ifThird: function (index, options) {
+        if (index % 3 === 0) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+      },
+    },
   })
 );
 
@@ -44,6 +54,11 @@ mongoose.connection
   .on("error", (err) => {
     console.log("MongoDB connection error: ", err);
   });
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
@@ -53,13 +68,11 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      file.originalname + "-" + Date.now() + path.extname(file.originalname)
-    );
+    cb(null, Date.now() + "-" + file.originalname);
   },
 });
-app.use(multer({ storage: storage }).single("photos", 3));
+app.use(multer({ storage: storage }).single("photos"));
+//const upload = multer({ storage: storage }).array('photos', 3); //filter files
 
 app.use(express.json());
 app.use(expressValidator());
@@ -69,7 +82,7 @@ app.use(
     name: "session",
     secret: process.env.SECRET_KEY,
     cookie: {
-      maxAge: 1000 * 60 * 15,
+      maxAge: 1000 * 60 * 23,
     },
     resave: false,
     saveUninitialized: false,
@@ -101,6 +114,8 @@ app.use(
 app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.newRoom;
+  res.locals.rooms;
   res.locals.flashMessages = req.flash();
   next();
 });

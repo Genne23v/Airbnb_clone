@@ -7,16 +7,19 @@
     <a class="navbar-brand" href="/"><div class="mid-logo"></div>
       </a>
 
-    <form id="second-search">
+    <form id="second-search" action="/room-listing">
       <div class="nav-item d-flex flex-row align-items-center" id="search-bar">
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
-          <select class="form-control" id="location2">
+          <select class="form-control location" id="location2" name="location">
             <option selected>Where are you going?</option>
-            <option value="Montreal">Montreal</option>
-            <option value="Vancouver">Vancouver</option>
-            <option value="Calgary">Calgary</option>
-            <option value="Hallifax">Hallifax</option>
+            {{#each locations}}
+<option value="{{this}}">{{this}}</option>
+{{/each}}
+{{!-- <option value="Montreal">Montreal</option>
+<option value="Vancouver">Vancouver</option>
+<option value="Calgary">Calgary</option>
+<option value="Hallifax">Hallifax</option> --}}
           </select>
         </div>
         <div class="search-form-divider"></div>
@@ -32,8 +35,8 @@
         <div class="search-form-divider"></div>
         <div class="mb-2">
           <label for="guests" class="form-label">Guests</label>
-<select class="form-control" id="guests2" >
-<option selected>Add guests</option>
+<select class="form-control guest" id="guests2" >
+<option value="">Add guests</option>
 <option value="1">1 guest</option>
 <option value="2">2 guests</option>
 <option value="3">3 guests</option>

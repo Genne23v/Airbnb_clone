@@ -1,51 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="shortcut icon"
-      sizes="76x76"
-      type="image/x-icon"
-      href="/images/airbnb_favico.ico"
-    />
-    <!-- BOOTSTRAP -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-    <!-- PATH WILL BE CHANGED FOR HBS FILE -->
-    <link href="./css/admin.css" rel="stylesheet" />
+  
 
-    <title>Airbnb: Vacation Rentals, Cabins, Beach Houses, Unique Homes</title>
-  </head>
-
-  <body>
-    <div class="container-fluid" id="admin-bg">
-      <div
-        class="navbar navbar-expand-lg bg-transparent justify-content-between mx-3 "
-      >
-        <div class="nav-item ">
-          <a class="navbar-brand m-1" href="/"><div id="admin-logo"></div></a>
-        </div>
-        <div class="nav-item ">
-          <a href="/admin/view" class=" border-0 shadow-sm"
-            ><button id="list-room" class="">View All List</button></a
-          >
-          <a href="/admin/logout" class="m-3 border-0 shadow-sm"
-            ><button id="logout" >
-              <span style="font-weight: 600;">{{userFname.name.fname}}</span>
-               | Log Out</button></a
-          >
-        </div>
-      </div>
-
-      <div class="container-fluid text-center text-white mb-3">
-        <h1>List your room</h1>
+      <div class="container-fluid text-center text-white">
+        <h1>Update your room</h1>
       </div>
       
       <div class="container-sm">
@@ -62,7 +19,9 @@
     {{/if}}
       
 
-        <form class="d-flex-row justify-content-center align-items-center pb-5" action="/admin/add-room" method="POST" enctype="multipart/form-data"> 
+        <form class="d-flex-row justify-content-center align-items-center pb-5" 
+        action="/admin/{{updatingRoom._id}}/update?_method=PUT" 
+        method="POST" enctype="multipart/form-data">
           <!-- <div class="input-group-prepend">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,8 +48,7 @@
               class="form-control"
               id="room-name"
               name="title"
-              placeholder="Lovely 1-bedroom rental unit with hot tub"
-              value="{{#if newRoom}}{{newRoom.title}}{{/if}}"
+              value="{{updatingRoom.title}}"
             />
           </div>
 
@@ -116,8 +74,7 @@
                 class="form-control"
                 id="price"
                 name="price"
-                placeholder="Set your price per night"
-                value="{{#if newRoom}}{{newRoom.price}}{{/if}}"
+                value="{{updatingRoom.price}}"
               />
               <div class="input-group-append">
                 <span class="input-group-text"><strong>CAD</strong></span>
@@ -132,8 +89,7 @@
               class="form-control"
               id="room-description"
               name="description"
-              placeholder="Bring the whole family to this great place with lots of room for run"
-            >{{#if newRoom}}{{newRoom.description}}{{/if}}</textarea>
+            >{{updatingRoom.description}}</textarea>
             <!-- <div class="input-group-append">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +119,7 @@
                 id="location"
                 name="location"
                 placeholder="Street name and city"
-                value="{{#if newRoom}}{{newRoom.location}}{{/if}}"
+                value="{{updatingRoom.location}}"
               />
               <!-- <div class="input-group-append">
               <svg
@@ -189,9 +145,13 @@
               Add some photos of your place
             </div>
 
-            <div id="photo-upload" class="container-lg d-flex flex-row justify-content-evenly px-0" >
-            <div class="photo-preview ">
-              <svg
+            <div id="photo-upload" class="d-flex flex-row justify-content-evenly" >
+            <div class="photo-preview">
+              
+              <img src="{{#if updatingRoom}}
+              {{updatingRoom.photos.filePath}}" alt="">
+              {{else}}
+<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -206,10 +166,15 @@
                   d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"
                 ></path>
               </svg>
+              {{/if}}
+
             </div>
 
             <div class="photo-preview">
-              <svg
+             <img src="{{#if updatingRoom}}
+              {{updatingRoom.photos.filePath}}" alt="">
+              {{else}}
+<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -224,10 +189,14 @@
                   d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"
                 ></path>
               </svg>
+              {{/if}}
             </div>
 
             <div class="photo-preview">
-              <svg
+              <img src="{{#if updatingRoom}}
+              {{updatingRoom.photos.filePath}}" alt="">
+              {{else}}
+<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -242,9 +211,10 @@
                   d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"
                 ></path>
               </svg>
+              {{/if}}
             </div>
 
-            <div class="custom-file px-3 border border-white rounded mb-4 mt-2">
+            <div id="upload-btn" class="custom-file px-3 border border-white rounded mb-4 mt-2">
               <input
               type="file"
               accept="image/*"
@@ -252,11 +222,10 @@
               class="custom-file-input"
               id="photos"
               name="photos"
-              {{!-- multiple --}}
+              
               hidden
             />
             <label class="custom-file-label" for="photos">
-              <div id="upload-btn">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -272,8 +241,7 @@
                 d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
               />
             </svg>
-            <p>Upload</p>
-            </div> 
+            <p style="text-align:center;">Upload New</p>
             </label>
 </div>
 
@@ -286,7 +254,7 @@
               id="post-room"
               class="form-control py-2"
             >
-              Post your listing
+              Update your listing
             </button>
           </div>
         </form>
@@ -298,10 +266,6 @@
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
->     
+>
     </script>
-
-    <script src="./js/preview.js"></script>
-      
-  </body>
-</html>
+      <script src="./public/js/preview.js"></script>

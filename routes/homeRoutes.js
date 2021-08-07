@@ -17,4 +17,6 @@ router.post(
 router.get("/logOut", homeController.logout, homeController.redirectView);
 router.get("/admin", homeController.index);
 
+router.post("/search", homeController.searchRooms);
+
 module.exports = router;

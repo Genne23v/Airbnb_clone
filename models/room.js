@@ -20,10 +20,21 @@ let roomSchema = new Schema(
       type: String,
       require: true,
     },
+    //photos: [Object],
     photos: {
-      data: Buffer,
-      contentType: String,
-      // require: true,
+      fileName: {
+        type: String,
+        require: true,
+      },
+      filePath: {
+        type: String,
+      },
+      fileType: {
+        type: String,
+      },
+      fileSize: {
+        type: String,
+      },
     },
   },
   {

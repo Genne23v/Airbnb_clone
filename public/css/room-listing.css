@@ -125,6 +125,10 @@ header {
   max-width: 360px;
   padding: 15px 0px 0px;
 }
+.room-info a:link {
+  color: black;
+  text-decoration: none;
+}
 
 .room-info h5 {
   font-weight: 300;

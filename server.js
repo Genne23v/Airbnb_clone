@@ -1,4 +1,5 @@
-const homeController = require("./controllers/homeController");
+// const User = require("./models/user");
+// const homeController = require("./controllers/homeController");
 
 const HTTP_PORT = process.env.PORT || 8080;
 const express = require("express"),
@@ -15,7 +16,6 @@ const express = require("express"),
   session = require("express-session"),
   methodOverride = require("method-override"),
   path = require("path");
-const User = require("./models/user");
 
 require("dotenv").config();
 

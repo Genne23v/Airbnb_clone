@@ -8,15 +8,8 @@ router.post(
   homeController.create,
   homeController.sendEmail
 );
-router.post(
-  "/logIn",
-  homeController.logInValidate
-  //homeController.authenticate
-  //homeController.redirectView
-);
+router.post("/logIn", homeController.logInValidate);
 router.get("/logOut", homeController.logout, homeController.redirectView);
 router.get("/admin", homeController.index);
-
-router.post("/search", homeController.searchRooms);
 
 module.exports = router;

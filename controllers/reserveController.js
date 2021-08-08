@@ -6,4 +6,7 @@ module.exports = {
       layout: false,
     });
   },
+  validate: (req, res, next) => {
+    next();
+  },
 };

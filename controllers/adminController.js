@@ -25,8 +25,6 @@ const fileSizeFormatter = (bytes, decimal) => {
 module.exports = {
   adminIndex: (req, res, next) => {
     if (req.session.loggedIn && req.session.user.admin) {
-      // console.log(`userFname: ${req.session.user}`);
-      // console.log(`formData: ${res.locals.newRoom}`);
       res.render("admin", {
         layout: false,
         userFname: req.session.user,
@@ -34,12 +32,11 @@ module.exports = {
         title: "admin",
       });
     } else {
-      //res.redirect("/");
       next();
     }
   },
   roomValidate: (req, res, next) => {
-    console.log(`req.file: ${req}`);
+    //console.log(`req.file: ${req}`);
     if (req.body.title.length > 0) {
       req
         .check("title", "Longer title will be appropriate")

@@ -32,7 +32,7 @@ $(".log-in").on("click", (e) => {
       password: password,
     }),
   }).done(function (data) {
-    console.log(`Response: ${data.loggedIn}`);
+    //console.log(`Response: ${data.loggedIn}`);
     displayLogInError(data);
   });
 });

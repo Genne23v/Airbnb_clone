@@ -15,19 +15,14 @@ const getUserParams = (body) => {
 };
 
 module.exports = {
-  index: (req, res, next) => {
-    // console.log(`Logged In: ${req.session.loggedIn}`);
-    // console.log(`User: ${req.session.user}`);
-    Room.find()
+  index: async (req, res, next) => {
+    await Room.find()
       .distinct("location", (err, result) => {
         res.locals.locations = result;
       })
       .then(() => {
         if (req.session.loggedIn) {
           if (req.session.user.admin) {
-            // console.log(`Admin logged in!`);
-            // console.log(`req.session.newRoom in admin: ${req.session.newRoom}`);
-            // //res.redirect("/admin");
             res.render("admin", {
               layout: false,
               userFname: req.session.user,
@@ -145,7 +140,6 @@ module.exports = {
   },
 
   logInValidate: (req, res, next) => {
-    console.log("Login validating");
     const userEmail = req.body.email;
     const userPassword = req.body.password;
 
@@ -166,8 +160,6 @@ module.exports = {
         res.json(res.locals.flashMessages);
       } else {
         res.locals.currentUser = req.user;
-        //console.log(`req.user: ${req.body.email}`);
-        //next();
 
         //WORKING CODE WITHOUT PASSPORT
         //console.log("Searching for the user..."); //TO BE REMOVED
@@ -199,7 +191,6 @@ module.exports = {
                 };
                 req.session.user = user;
                 req.session.loggedIn = true;
-                //console.log(`req.session.user: ${req.session.user}`);
                 //console.log(`baseUrl: ${req.baseUrl}`);
                 res.send(res.locals.flashMessages);
               } else {

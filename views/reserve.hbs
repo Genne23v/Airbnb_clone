@@ -17,8 +17,11 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
-    <link href="../css/reserve.css" rel="stylesheet">
-    <link href="../css/footer.css" rel="stylesheet">
+<!-- DATERANGEPICKER CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <link href="/css/reserve.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
 
     <title>Airbnb: Vacation Rentals, Cabins, Beach Houses, Unique Homes</title>
   </head>
@@ -53,7 +56,7 @@
                     <!-- USER NAME APPEARS HERE -->
                 {{#if loggedIn}}
 <li><a class="dropdown-item" href="#">Hello, <span style="font-weight: 600;">{{userFname.name.fname}}</span></a></li>
-       <li><a class="dropdown-item" href="/room-listing/logout" role="button" aria-hidden="true"
+       <li><a class="dropdown-item" href="/reserve/{{bookingRoom._id}}/logout" role="button" aria-hidden="true"
     >Log Out</a></li>
                 {{else}}
                   <li>
@@ -78,9 +81,141 @@
               </div>
             </div>
         </div>
-
     </header>
 
+<main>
+<div class="container my-3 mx-auto" style="max-width: 1240px;">
+  <h3 style="font-weight: 400;">{{bookingRoom.title}}</h3>
+  <div class="sub-info d-flex justify-content-between">
+    <div id="rate">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff385c" class="bi bi-star-fill" viewBox="0 0 16 16">
+      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+    </svg>
+    <span class="rate"><strong>4.71</strong></span><span class="review"> <small>(9 review)</span><span> · in {{bookingRoom.location}}</small></span>
+    </div>
+    <div id="right-menu">
+      <a href="#" style="color:black;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+        </svg>
+        Share</a>
+      <a href="#" style="color:black;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+          <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+        </svg>
+        Save</a>
+    </div>
+  </div>
+
+  <div id="photo-frame" class="container mx-0 my-4 p-0" >
+    <div class="row">
+      <div id="left-large" class="col-6 px-1">
+        <img class="shadow" src="{{bookingRoom.photos.filePath}}" alt="room main image">
+      </div>
+      <div id="right-small" class="col-6 container m-0 pe-0">
+        <div class="row pb-2">
+          <div class="col px-1">
+            <img src="https://a0.muscache.com/im/pictures/aca4bf46-2df4-48ea-acc7-4821b296f677.jpg?im_w=480" alt="romm small image 1">
+          </div>
+          <div class="col px-1 right-top">
+            <img src="https://a0.muscache.com/im/pictures/5e55d138-2c23-44c1-bc1c-b0e2c81682dc.jpg?im_w=480" alt="romm small image 2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col px-1">
+            <img class="shadow" src="https://a0.muscache.com/im/pictures/c5f3a308-ee75-4577-8fcc-9eb56fad8cf7.jpg?im_w=480" alt="romm small image 3">
+          </div>
+          <div class="col px-1 right-bottom" >
+            <img class="shadow" src="https://a0.muscache.com/im/pictures/f21acb65-04c5-475b-9394-84e09bbacf9b.jpg?im_w=480" alt="romm small image 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-8 mx-0">
+    <div class="row">
+      <div class="col-7 ps-0 pe-3">
+            <div class="d-flex justify-content-between mr-4">
+              <div id="sub-title" class="container p-0">
+                <h4>Entire residential home hosted by George</h2>
+                <p>4 guests · 2 bedroom · 2 bed · 1.5 baths</p>
+              </div>
+              <div id="profile" class="align-self-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+              </div>
+            </div>
+
+            <hr>
+
+<div class="row">
+            <div id="aux-info" class="col-1 d-flex-column justify-content-around">
+      <svg class="d-block mb-5" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+      </svg>
+      <svg class="d-block mb-5" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+        <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>
+      </svg>
+      <svg class="d-block mb-5" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+        <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+      </svg>
+      <svg class="mb-5" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      </svg>
+    </div>
+  
+    <div class="col-11">
+      <div class="row">
+        <h5>Entire home</h5>
+        <p>You’ll have the house to yourself.</p>
+      </div>
+      <div class="row">
+        <h5>Enhanced Clean</h5>
+        <p>This host committed to Airbnb's 5-step enhanced cleaning process. </p>
+      </div>
+      <div class="row">
+        <h5>Self check-in</h5>
+        <p>Check yourself in with the lockbox.</p>
+      </div>
+      <div class="row">
+        <h5>Great location</h5>
+        <p>91% of recent guests gave the location a 5-star rating</p>
+      </div>
+
+    </div>   {{!-- AUTO INFO CONTAINER --}}
+
+    <hr>
+        <p>{{bookingRoom.description}}</p>
+</div>
+
+      </div>  {{!-- LEFT SIDE CONTAINER --}}
+
+      {{>book}}
+
+            <div id="report" class="mt-4 w-100 text-center" >
+                <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="dimgray" class="bi bi-flag-fill" viewBox="0 0 16 16">
+  <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
+</svg>
+              <a href="#">
+<span>Report this listing</span></a>
+            </div>
+      </div>  {{!-- RIGHT SIDE CONTAINER --}}
+    </div>  {{!-- ROW CONTAINER --}}
+  </div>  {{!-- GRID CONTAINER --}}    
+
+  </div>  {{!-- GRID CONTAINER --}}
+</div>  {{!-- ALL CONTAINER --}}
+</main>
+
+    
+    {{>log-in}}
+    
 {{>footer}}
 
     <script
@@ -89,5 +224,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<!-- MOMENT, DATEPICKER, POPPER JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+
+$(function() {
+  $('.pickers').daterangepicker({
+    opens: 'center',
+    autoApply: true,
+    autoUpdateInput: false
+  }, function(start, end, label) {
+      
+      $('.start-date').val(start.format('MMM-DD'));
+      $('.end-date').val(end.format('MMM-DD'));
+  });
+});
+</script>
   </body>
 </html>

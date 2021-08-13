@@ -3,6 +3,9 @@ const Room = require("../models/room");
 module.exports = {
   index: (req, res, next) => {
     //console.log(`req.query in roomList: ${req.query.start_date}`);
+    if (req.session.bookingConfirmed) {
+      req.session.bookingConfirmed = false;
+    }
 
     if (req.session.loggedIn && req.session.user.admin) {
       //console.log(`Admin logged in!`);

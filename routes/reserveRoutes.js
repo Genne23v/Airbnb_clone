@@ -8,7 +8,7 @@ router.post(
   reserveController.checkout,
   reserveController.redirectView
 );
-router.get("/:id/book", reserveController.book);
+router.get("/:id/book", reserveController.book, reserveController.redirectView);
 router.get(
   "/:id/logout",
   reserveController.logout,

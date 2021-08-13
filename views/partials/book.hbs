@@ -21,21 +21,25 @@
     {{#if flashMessages.danger}}
     <div class="alert alert-danger mb-1">
     {{#each flashMessages.danger}}
-    <span class="px-2">&#10004 {{this}}  </span>
+    <p class="px-2">&#10004 {{this}}  </p>
     {{/each}}
     </div>
     {{/if}}
 
-              <form id="reserve-form" class="mb-0" method="POST" action="/reserve/{{bookingRoom._id}}/confirm">
+{{#if bookingInfo}}
+  <form id="reserve-form" class="mb-0" method="GET" action="/reserve/{{bookingRoom._id}}/book">
+{{else}}
+  <form id="reserve-form" class="mb-0" method="POST" action="/reserve/{{bookingRoom._id}}/confirm">
+{{/if}}
               <div id="booking-forms" class="my-3 ">
                 <div class="form-group py-2 my-0 row" id="form-row" style="border: none;">
                   <div class="col pe-0 mr-2 input-daterange" style="border-right: 1px solid lightgray; margin-right: 1rem;">
                     <label for="check-in" class="form-label mb-0 ps-0">Check-in</label>
-                    <input type="text" class="form-control py-0 form-bdr pickers start-date" id="picker2" name="startDate" date-provide="datepicker" placeholder="Add dates"></input>
+                    <input type="text" class="form-control py-0 form-bdr pickers start-date" id="picker2" name="startDate" date-provide="datepicker" placeholder="Add dates" value="{{#if bookingInfo}}{{bookingInfo.startDate}}{{else}}{{/if}}"></input>
                   </div>
                   <div class="col ps-0 input-daterange" style="border: none;">
                     <label for="check-out" class="form-label mb-0 ps-0">Check-out</label>
-                    <input type="text" class="form-control py-0 form-bdr end-date" id="end-date2" name="endDate" date-provide="datepicker" placeholder="Add dates"></input>
+                    <input type="text" class="form-control py-0 form-bdr end-date" id="end-date2" name="endDate" date-provide="datepicker" placeholder="Add dates" value="{{#if bookingInfo}}{{bookingInfo.endDate}}{{else}}{{/if}}"></input>
                   </div>
                 </div>
 <hr class="m-0">
@@ -51,7 +55,11 @@
               </div>
 
                 <div class="form-group submit">
+                  {{#if bookingInfo}}
+                  <button type="submit" value="Submit" id="book-confirm" class="btn py-0">Reserve</button>                  
+                  {{else}}
                   <button type="submit" value="Submit" id="book-confirm" class="btn py-0">Confirm Booking</button>
+                  {{/if}}
                 </div>
               </form>
 

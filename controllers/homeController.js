@@ -139,7 +139,7 @@ module.exports = {
     res.json(res.locals.flashMessages);
   },
 
-  logInValidate: (req, res, next) => {
+  logInValidate: async (req, res, next) => {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
 
@@ -149,7 +149,7 @@ module.exports = {
     req.check("email", "Email cannot be empty").notEmpty();
     req.check("password", "Password cannot be empty").notEmpty();
 
-    req.getValidationResult().then((error) => {
+    await req.getValidationResult().then((error) => {
       if (!error.isEmpty()) {
         let errMessages = error.array().map((e) => e.msg);
         req.skip = true;

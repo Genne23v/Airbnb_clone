@@ -15,6 +15,8 @@ module.exports = {
           bookingRoom: room,
           userFname: req.session.user,
           loggedIn: req.session.loggedIn,
+          bookingConfirmed: req.session.bookingConfirmed,
+          bookingInfo: req.session.booking,
         });
       })
       .catch((err) => {
@@ -24,13 +26,14 @@ module.exports = {
       });
   },
   validate: (req, res, next) => {
+    console.log(`req.params - ${req.body.startDate === null}`);
     if (!req.session.loggedIn) {
       req.flash("danger", "Please log in first");
       res.locals.redirect = `/reserve/${req.params.id}`;
       next();
     }
-    req.check("startDate", "Start date must be entered!");
-    req.check("endDate", "End date must be entered!");
+    req.check("startDate", "Start date must be entered!").notEmpty();
+    req.check("endDate", "End date must be entered!").notEmpty();
 
     req.getValidationResult().then((err) => {
       if (!err.isEmpty()) {
@@ -58,6 +61,8 @@ module.exports = {
 
       req.session.booking = {
         numStays: days,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
         totalPriceBeforeTax: Math.round(subTotal),
         serviceFee: Math.round(serviceFee),
         tax: Math.round(tax),
@@ -73,7 +78,8 @@ module.exports = {
     }
   },
   book: (req, res, next) => {
-    console.log();
+    let roomId = req.params.id;
+    console.log(`booking requested`);
 
     let transporter = nodeMailer.createTransport({
       host: "smtp.mailtrap.io",
@@ -85,18 +91,21 @@ module.exports = {
     });
     let mailOptions = {
       from: "d642f85f6d-9ae820@inbox.mailtrap.io",
-      to: req.body.email,
+      to: req.session.user.email,
       subject: `Success! - Your booking for room ID - ${req.session.bookingRoom._id} has been made.`,
-      text: `Dear, ${req.body.fname}.\nWe have received your booking request for room ID - ${req.session.bookingRoom._id}. We are happy to tell you that your booking has been complete successfully.\nNo further action is required now.\n\nBest regards`,
+      text: `Dear, ${req.session.user.name.fname}.\nWe have received your booking request for room ID - ${req.session.bookingRoom._id}. We are happy to tell you that your booking has been complete successfully.\nNo further action is required now.\n\nBest regards`,
     };
     transporter.sendMail(mailOptions, (err, data) => {
       if (err) {
         console.log("Error" + err);
       } else {
-        console.log(`Email sent to ${req.body.email} successfully.`);
+        console.log(`Email sent to ${req.session.user.email} successfully.`);
       }
     });
-    res.json(res.locals.flashMessages);
+
+    req.session.bookingConfirmed = true;
+    res.locals.redirect = `/reserve/${roomId}`;
+    next();
   },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
@@ -109,6 +118,9 @@ module.exports = {
     res.locals.redirect = `/reserve/${roomId}`;
     req.logout();
     req.session.loggedIn = false;
+    req.session.bookingRoom = null;
+    req.session.booking = null;
+    req.session.bookingConfirmed = false;
     next();
   },
 };

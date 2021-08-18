@@ -16,38 +16,43 @@ const getUserParams = (body) => {
 
 module.exports = {
   index: async (req, res, next) => {
-    await Room.find()
-      .distinct("location", (err, result) => {
-        res.locals.locations = result;
-      })
-      .then(() => {
-        if (req.session.loggedIn) {
-          if (req.session.user.admin) {
-            res.render("admin", {
-              layout: false,
-              userFname: req.session.user,
-              newRoom: req.session.newRoom,
-            });
-          } else {
-            res.render("main", {
-              layout: false,
-              loggedIn: req.session.loggedIn,
-              userFname: req.session.user,
-              locations: res.locals.locations,
-            });
-          }
-        } else {
-          res.render("main", {
-            layout: false,
-            locations: res.locals.locations,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(
-          `Error occurred while fetching room locations - ${err.message}`
-        );
+    const locations = await Room.find()
+      .distinct(
+        "location"
+        // , (err, results) => {
+        //   res.locals.locations = results;
+        //   console.log(`location results - ${results}`);
+        // }
+      )
+      .exec();
+
+    //console.log(`location results - ${res.locals.locations}`);
+    if (req.session.loggedIn) {
+      if (req.session.user.admin) {
+        res.render("admin", {
+          layout: false,
+          userFname: req.session.user,
+          newRoom: req.session.newRoom,
+        });
+      } else {
+        res.render("main", {
+          layout: false,
+          loggedIn: req.session.loggedIn,
+          userFname: req.session.user,
+          locations: locations,
+        });
+      }
+    } else {
+      res.render("main", {
+        layout: false,
+        locations: locations,
       });
+    }
+    // .catch((err) => {
+    //   console.log(
+    //     `Error occurred while fetching room locations - ${err.message}`
+    //   );
+    // });
   },
 
   validate: (req, res, next) => {
@@ -139,7 +144,7 @@ module.exports = {
     res.json(res.locals.flashMessages);
   },
 
-  logInValidate: async (req, res, next) => {
+  logInValidate: (req, res, next) => {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
 
@@ -149,7 +154,7 @@ module.exports = {
     req.check("email", "Email cannot be empty").notEmpty();
     req.check("password", "Password cannot be empty").notEmpty();
 
-    await req.getValidationResult().then((error) => {
+    req.getValidationResult().then((error) => {
       if (!error.isEmpty()) {
         let errMessages = error.array().map((e) => e.msg);
         req.skip = true;

@@ -113,6 +113,7 @@ app.use(
 app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.loggedIn = req.session.loggedIn;
   res.locals.newRoom;
   res.locals.rooms;
   res.locals.flashMessages = req.flash();

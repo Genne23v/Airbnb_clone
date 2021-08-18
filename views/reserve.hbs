@@ -246,6 +246,19 @@ $(function() {
       $('.end-date').val(end.format('MMM-DD'));
   });
 });
+
+$("#book-confirm").on("click", function () {
+    document.location.reload(true)
+  });
+            
+document.addEventListener("DOMContentLoaded", function(event) { 
+    var scrollpos = localStorage.getItem('scrollpos');
+    if (scrollpos) window.scrollTo(0, scrollpos);
+});
+
+window.onbeforeunload = function(e) {
+    localStorage.setItem('scrollpos', window.scrollY);
+};
 </script>
   </body>
 </html>

@@ -9,6 +9,7 @@ router.post(
   reserveController.redirectView
 );
 router.get("/:id/book", reserveController.book, reserveController.redirectView);
+router.get("/:id/summary", reserveController.summaryView);
 router.get(
   "/:id/logout",
   reserveController.logout,

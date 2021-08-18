@@ -9,13 +9,14 @@ module.exports = {
       .then((room) => {
         room.photos.filePath = room.photos.filePath.substring(6);
         req.session.bookingRoom = room;
-
+        // console.log(
+        //   `res.locals.bookingConfirmed ${res.locals.bookingConfirmed}`
+        // );
         res.render("reserve", {
           layout: false,
           bookingRoom: room,
           userFname: req.session.user,
           loggedIn: req.session.loggedIn,
-          bookingConfirmed: req.session.bookingConfirmed,
           bookingInfo: req.session.booking,
         });
       })
@@ -26,9 +27,10 @@ module.exports = {
       });
   },
   validate: (req, res, next) => {
-    console.log(`req.params - ${req.body.startDate === null}`);
+    //console.log(`req.params - ${req.body.startDate === null}`);
     if (!req.session.loggedIn) {
       req.flash("danger", "Please log in first");
+      req.skip = true;
       res.locals.redirect = `/reserve/${req.params.id}`;
       next();
     }
@@ -68,6 +70,7 @@ module.exports = {
         tax: Math.round(tax),
         totalPriceAfterTax: Math.round(totalAfterTax),
       };
+      console.log(req.session.booking);
       res.render("reserve", {
         layout: false,
         bookingRoom: req.session.bookingRoom,
@@ -78,6 +81,7 @@ module.exports = {
     }
   },
   book: (req, res, next) => {
+    //if (!res.session.loggedIn) next();
     let roomId = req.params.id;
     console.log(`booking requested`);
 
@@ -104,8 +108,32 @@ module.exports = {
     });
 
     req.session.bookingConfirmed = true;
-    res.locals.redirect = `/reserve/${roomId}`;
+    res.locals.redirect = `/reserve/${roomId}/summary`;
     next();
+  },
+  summaryView: (req, res) => {
+    let roomId = req.params.id;
+
+    Room.findById(roomId)
+      .lean()
+      .then((room) => {
+        room.photos.filePath = room.photos.filePath.substring(6);
+        req.session.bookingRoom = room;
+
+        res.render("reserve", {
+          layout: false,
+          bookingRoom: room,
+          userFname: req.session.user,
+          loggedIn: req.session.loggedIn,
+          bookingConfirmed: req.session.bookingConfirmed,
+          bookingInfo: req.session.booking,
+        });
+      })
+      .catch((err) => {
+        console.log(
+          `Error occurred while fetching requested room - ${err.message}`
+        );
+      });
   },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
@@ -114,13 +142,14 @@ module.exports = {
     } else next();
   },
   logout: (req, res, next) => {
-    let roomId = req.params.id;
-    res.locals.redirect = `/reserve/${roomId}`;
+    //let roomId = req.params.id;
+    res.locals.redirect = `/`;
     req.logout();
-    req.session.loggedIn = false;
-    req.session.bookingRoom = null;
-    req.session.booking = null;
-    req.session.bookingConfirmed = false;
+    req.session.destroy();
+    // req.session.loggedIn = false;
+    // req.session.bookingRoom = null;
+    // req.session.booking = null;
+    // req.session.bookingConfirmed = false;
     next();
   },
 };

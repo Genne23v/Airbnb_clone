@@ -5,6 +5,7 @@ module.exports = {
     //console.log(`req.query in roomList: ${req.query.start_date}`);
     if (req.session.bookingConfirmed) {
       req.session.bookingConfirmed = false;
+      req.session.booking = null;
     }
 
     if (req.session.loggedIn && req.session.user.admin) {

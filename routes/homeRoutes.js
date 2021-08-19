@@ -1,15 +1,15 @@
-const router = require("express").Router(),
-  homeController = require("../controllers/homeController");
+const router = require('express').Router();
+const homeController = require('../controllers/homeController');
 
-router.get("/", homeController.index);
+router.get('/', homeController.index);
 router.post(
-  "/register",
+  '/register',
   homeController.validate,
   homeController.create,
-  homeController.sendEmail
+  homeController.sendEmail,
 );
-router.post("/logIn", homeController.logInValidate);
-router.get("/logOut", homeController.logout, homeController.redirectView);
-router.get("/admin", homeController.index);
+router.post('/logIn', homeController.logInValidate);
+router.get('/logOut', homeController.logout, homeController.redirectView);
+router.get('/admin', homeController.index);
 
 module.exports = router;

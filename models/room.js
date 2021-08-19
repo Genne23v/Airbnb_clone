@@ -1,7 +1,8 @@
-const mongoose = require("mongoose"),
-  Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-let roomSchema = new Schema(
+const Schema = mongoose.Schema;
+
+const roomSchema = new Schema(
   {
     title: {
       type: String,
@@ -20,7 +21,6 @@ let roomSchema = new Schema(
       type: String,
       require: true,
     },
-    //photos: [Object],
     photos: {
       fileName: {
         type: String,
@@ -39,7 +39,7 @@ let roomSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-module.exports = mongoose.model("Room", roomSchema);
+module.exports = mongoose.model('Room', roomSchema);
